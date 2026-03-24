@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 
 
@@ -87,14 +88,142 @@ HashMap<T>::~HashMap() {
 }
 
 //-------------------------------- HASH FUNCTION -------------------------------
-template<typename T> //custom template for string input keys
+template<typename T> 
 int HashMap<T>::hashFunction(string key) const {
-	long long val = 0;
+	
+	unsigned long long val = 0; //positive to prevent negative, and long to prevent overflow
 
 	//convert string to number
 	for (char c : key) {
-		val = (unsigned char)c + (11* val);
+	//polynomial Rolling hash Method.
+		val = (unsigned char)c + (31* val); // 31 is a prime number so less collisions
 	}
-
+	
 	return val % capacity;
 }
+
+//-------------------------------- Put Function ---------------------------
+
+template<typename T>
+void HashMap<T>::put(string key, T val) {
+	//get index for the key
+	int index = hashFunction(key);
+
+	Node* current = table[index];
+	//check if the key is already exist
+	while (current != nullptr) {
+		//update the rule if key already exist
+		if (current.key == key) {
+			current.value = val;
+			return; //get out of the function
+		}
+
+		current = current.next; //move to next node on the same chain
+	}
+
+	//if not exist, create a new
+	Node* newNode = new Node(key, val);
+	newNode.next = table[index]; //let the new node points to the first node on the table
+	table[index] = newNode; //let the newNode be the first node on the chain
+	size++; // increment the size fo the table
+
+	//Check the capacity is less than  0.75
+	if (static_cast<float>(size) / capacity >= factor) {
+		rehash();
+	}
+
+}
+
+//---------------------------------- rehash --------------------------------
+void rehash() {
+ 
+	Node** oldTable = table;
+	int oldC = capacity;
+	//double the capacity
+	capacity *= 2;
+	table = new Node * [capacity];
+	
+	//set all the nodes in the new table to null
+	for (int i = 0; i < capacity; i++)
+	{
+		table[i] = nullptr;
+	}
+
+	//put the old nodes into the new table
+	for (int i = 0; i < capacity; i++)
+	{
+		Node* current = oldTable[i];
+		
+		//if current contains data, copy it
+		while (current != nullptr) {
+			
+			
+
+			int index = hashFunction(current->key);//get the new index 
+
+			Node* next = current->next; //to not lose current.next;
+			current.next = table[index];//points on the head of the chain 
+			table[index] = current;//insert at the head of the chain
+			current = next;// move to the next node in the old chain
+			
+		}
+	}
+
+	delete[] oldTable;
+}
+
+//---------------------------------- get VAlue ------------------------------
+
+template<typename T>
+bool get(string key, T& value) {
+	
+	//get index
+	int index = hashFunction(key);
+
+
+	Node* current = table[index];//point to the first
+
+	//loop over the chain till you find the node with the same key
+	while (current != nullptr) {
+		if (current->key == key) {
+			value = current->value;//found
+			return true;//return true
+		}
+		current = current->next;//move to the next node in the chain
+	}
+
+	//if not found	
+	return false;
+}
+
+//---------------------------------- Contains ---------------------------------
+template<typename T>
+bool contains(string key) {
+
+	//get index
+	int index = hashFunction(key);
+
+
+	Node* current = table[index];//point to the first
+
+	//loop over the chain till you find the node with the same key
+	while (current != nullptr) {
+		if (current->key == key) {
+		   return true;//return true
+		}
+		current = current->next;//move to the next node in the chain
+	}
+
+	//if not found	
+	return false;
+}
+
+//---------------------------- set Factor ------------------------
+template<typename T>
+void setFactor(float f) {
+	
+	if(f>0)			//factor should be postive
+	factor = f; 
+}
+
+//------------------------
