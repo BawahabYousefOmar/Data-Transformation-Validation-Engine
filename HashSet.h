@@ -3,42 +3,38 @@
 #include <string>
 
 using namespace std;
-
 template <typename T>
-class HashMap {
-	private:
-		//Node Structure
-		struct Node {
-			string key;
-			T value;
-			Node* next;
+class HashSet {
+private:
+	//Node Structure
+	struct Node {
+		T key;
+		Node* next;
 
-			//constructor
-			Node(string k, T val) : key(k), value(val), next(nullptr) {};
-		};
+		//constructor
+		Node( T k) : key(k), next(nullptr) {};
+	};
 
-			// array of pointers
-			Node** table;
-			//Current size of the array
-			int capacity;
-			//Current number of stored data
-			int size;
-			//factor to resize
-			float factor;
+	// array of pointers
+	Node** table;
+	//Current size of the array
+	int capacity;
+	//Current number of stored IDs
+	int size;
+	//factor to resize
+	float factor;
 
 
-			//Private Functions
-			int hashFunction(string key) const;
-			void rehash();  // double size of the table
+	//Private Functions
+	int hashFunction(T key) const;
+	void rehash();  // double size of the table
 public:
-	HashMap(int capa = 16);  //set the intial capacity to 16
-		
-	~HashMap(); //destuctor
-	
-	void put(string key, T value); //insert a rule
-	bool get(string key, T& value) const;		  // get a rule
+	HashSet(int capa = 16);  //set the intial capacity to 16
 
-	bool contains(string key) const;
+	~HashSet(); //destuctor
+
+	bool add(T key); //insert a rule
+	bool contains(T key) const;
 	int getSize() const { return size; };			//return the size fo the array
 	void setFactor(float f);// set the factor
 };
@@ -46,11 +42,11 @@ public:
 //-------------------------------
 //-----------IMPLEMENTATION-------
 //-----------------------------
- 
+
 
 //-------------------------------- CONSTRUCTOR -------------------------------
 template<typename T>
-HashMap<T>::HashMap(int capa) {
+HashSet<T>::HashSet(int capa) {
 	capacity = capa;
 	size = 0;
 	factor = 0.75f;
@@ -69,7 +65,7 @@ HashMap<T>::HashMap(int capa) {
 
 //-------------------------------- DESTRUCTOR -------------------------------
 template<typename T>
-HashMap<T>::~HashMap() {
+HashSet<T>::~HashSet() {
 	//Iterate over every chain of nodes in the table
 	for (int i = 0; i < capacity; i++)
 	{
@@ -89,41 +85,40 @@ HashMap<T>::~HashMap() {
 }
 
 //-------------------------------- HASH FUNCTION -------------------------------
-template<typename T> 
-int HashMap<T>::hashFunction(string key) const {
-	
+template<typename T>
+int HashSet<T>::hashFunction(T key) const {
+
 	unsigned long long val = 0; //positive to prevent negative, and long to prevent overflow
 
 	//convert string to number
 	for (char c : key) {
-	//polynomial Rolling hash Method.
-		val = (unsigned char)c + (31* val); // 31 is a prime number so less collisions
+		//polynomial Rolling hash Method.
+		val = (unsigned char)c + (31 * val); // 31 is a prime number so less collisions
 	}
-	
+
 	return val % capacity;
 }
 
-//-------------------------------- Put Function ---------------------------
+//-------------------------------- Add Function ---------------------------
 
 template<typename T>
-void HashMap<T>::put(string key, T val) {
+bool HashSet<T>::add(T key) {
 	//get index for the key
 	int index = hashFunction(key);
 
 	Node* current = table[index];
 	//check if the key is already exist
 	while (current != nullptr) {
-		//update the rule if key already exist
+		//if found, return false;
 		if (current->key == key) {
-			current->value = val;
-			return; //get out of the function
+			return false; //exist, return false;
 		}
 
 		current = current->next; //move to next node on the same chain
 	}
 
 	//if not exist, create a new
-	Node* newNode = new Node(key, val);
+	Node* newNode = new Node(key);
 	newNode->next = table[index]; //let the new node points to the first node on the table
 	table[index] = newNode; //let the newNode be the first node on the chain
 	size++; // increment the size fo the table
@@ -133,18 +128,19 @@ void HashMap<T>::put(string key, T val) {
 		rehash();
 	}
 
+	return true;// new id, not found
 }
 
 //---------------------------------- rehash --------------------------------
 template<typename T>
-void HashMap<T>::rehash() {
- 
+void HashSet<T>::rehash() {
+
 	Node** oldTable = table;
 	int oldC = capacity;
 	//double the capacity
 	capacity *= 2;
 	table = new Node * [capacity];
-	
+
 	//set all the nodes in the new table to null
 	for (int i = 0; i < capacity; i++)
 	{
@@ -155,11 +151,11 @@ void HashMap<T>::rehash() {
 	for (int i = 0; i < oldC; i++)
 	{
 		Node* current = oldTable[i];
-		
+
 		//if current contains data, copy it
 		while (current != nullptr) {
-			
-			
+
+
 
 			int index = hashFunction(current->key);//get the new index 
 
@@ -167,40 +163,18 @@ void HashMap<T>::rehash() {
 			current->next = table[index];//points on the head of the chain 
 			table[index] = current;//insert at the head of the chain
 			current = next;// move to the next node in the old chain
-			
+
 		}
 	}
 
 	delete[] oldTable;
 }
 
-//---------------------------------- get VAlue ------------------------------
 
-template<typename T>
-bool HashMap<T>::get(string key, T& value) const {
-	
-	//get index
-	int index = hashFunction(key);
-
-
-	Node* current = table[index];//point to the first
-
-	//loop over the chain till you find the node with the same key
-	while (current != nullptr) {
-		if (current->key == key) {
-			value = current->value;//found
-			return true;//return true
-		}
-		current = current->next;//move to the next node in the chain
-	}
-
-	//if not found	
-	return false;
-}
 
 //---------------------------------- Contains ---------------------------------
 template<typename T>
-bool HashMap<T>::contains(string key) const{
+bool HashSet<T>::contains(T key) const {
 
 	//get index
 	int index = hashFunction(key);
@@ -211,7 +185,7 @@ bool HashMap<T>::contains(string key) const{
 	//loop over the chain till you find the node with the same key
 	while (current != nullptr) {
 		if (current->key == key) {
-		   return true;//return true
+			return true;//return true
 		}
 		current = current->next;//move to the next node in the chain
 	}
@@ -222,10 +196,10 @@ bool HashMap<T>::contains(string key) const{
 
 //---------------------------- set Factor ------------------------
 template<typename T>
-void HashMap<T>::setFactor(float f) {
-	
-	if(f>0)			//factor should be postive
-	factor = f; 
+void HashSet<T>::setFactor(float f) {
+
+	if (f > 0)			//factor should be postive
+		factor = f;
 }
 
 //------------------------
