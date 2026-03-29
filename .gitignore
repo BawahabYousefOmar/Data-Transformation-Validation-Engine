@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+
+# Ignore local Visual Studio project files to keep repo strictly source-code only
+*.sln
+*.vcxproj
+*.vcxproj.*
