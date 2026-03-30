@@ -34,7 +34,7 @@ public:
 	~HashSet(); //destuctor
 
 	bool add(T key); //insert a rule
-	bool contains(T key) const;
+	bool contains(T key) const; //check if the key exist
 	int getSize() const { return size; };			//return the size fo the array
 	void setFactor(float f);// set the factor
 };
@@ -77,7 +77,6 @@ HashSet<T>::~HashSet() {
 			delete prev;
 		}
 
-		delete current; //Delete current
 	}
 
 	//delete the table
@@ -124,7 +123,7 @@ bool HashSet<T>::add(T key) {
 	size++; // increment the size fo the table
 
 	//Check the capacity is less than  0.75
-	if (static_cast<float>(size) / capacity >= factor) {
+	if (static_cast<float>(size) >= capacity * factor) {
 		rehash();
 	}
 

@@ -81,7 +81,7 @@ HashMap<T>::~HashMap() {
 			delete prev;
 		}
 
-		delete current; //Delete current
+		
 	}
 
 	//delete the table
@@ -129,7 +129,7 @@ void HashMap<T>::put(string key, T val) {
 	size++; // increment the size fo the table
 
 	//Check the capacity is less than  0.75
-	if (static_cast<float>(size) / capacity >= factor) {
+	if (static_cast<float>(size) >= capacity * factor) {
 		rehash();
 	}
 

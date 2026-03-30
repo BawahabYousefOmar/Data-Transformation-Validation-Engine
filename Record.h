@@ -8,9 +8,9 @@ using namespace std;
 class Record {
 
 private:
-	int id;
+	string id;
 	string name;
-	double gpa;
+	string gpa;
 	string email;
 	string phone;
 	bool valid; // to indicate if the record is valid or not
@@ -22,12 +22,12 @@ private:
 public:	
 	//constructors:
 	Record() : id(0), name(""), gpa(0.0), email(""), phone("") {};
-	Record(int id, string name, double gpa, string email, string phone) : id(id), name(name), gpa(gpa), email(email), phone(phone) {};
+	Record(string id, string name, string gpa, string email, string phone) : id(id), name(name), gpa(gpa), email(email), phone(phone) {};
 
 	//Getters:
-	int getId() const { return id; };
+	string getId() const { return id; };
 	string getName() const { return name; };
-	double getGpa() const { return gpa; };
+	string getGpa() const { return gpa; };
 	string getEmail() const { return email; };
 	string getPhone() const { return phone; };
 

@@ -18,7 +18,7 @@ int main() {
     // We will map a string (Field Name) to a string (Validation Rule)
     HashMap<string> rulesMap;
 
-    // Test Insertion
+	// Test Insertion // later we will use struct functions to process the rules, but for now we will just use strings to represent them
     rulesMap.put("ID", "Must be 9 digits");
     rulesMap.put("GPA", "Between 0.0 and 4.0");
     rulesMap.put("Name", "Cannot be empty");
