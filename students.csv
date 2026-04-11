@@ -1,0 +1,7 @@
+stud_id,full_name,gpa,e_mail,mobile_number,department
+900221101,Ahmed Hassan,3.7,ahmed.h@university.edu,01012345678,CS
+900221102,Sara Ali,3.9,sara.a@university.edu,01098765432,IT
+900221103,Mohamed Khaled,2.1,m.khaled@university.edu,01156781234,CS
+900221101,Youssef Tarek,3.5,y.tarek@university.edu,01234567890,IT
+900221104,"Smith, John",4.0,john.s@university.edu,01311223344,CS
+900221105,Nour Ibrahim,,nour.i@university.edu,01412345678,IT
