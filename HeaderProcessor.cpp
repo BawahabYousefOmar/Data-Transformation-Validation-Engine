@@ -18,7 +18,9 @@ HeaderProcessor::HeaderProcessor() {
 
 string HeaderProcessor::toLower(const string& str) const {
     string result = str;
-    transform(result.begin(), result.end(), result.begin(), ::tolower);
+    for (char& c : result) {
+        c = tolower(c);
+    }
     return result;
 }
 
@@ -99,7 +101,7 @@ bool HeaderProcessor::loadFromFile(const string& filePath) {
 
 // ----------------------------------------------------------------
 // translate
-// Looks up the raw column name (case-insensitive) in the map.
+// Looks up the raw column header (case-insensitive) in the map.
 // Returns the standard key, or "" if not found.
 // ----------------------------------------------------------------
 string HeaderProcessor::translate(const string& rawHeader) const {
