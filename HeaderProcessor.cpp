@@ -103,7 +103,14 @@ bool HeaderProcessor::loadFromFile(const string& filePath) {
 // Returns the standard key, or "" if not found.
 // ----------------------------------------------------------------
 string HeaderProcessor::translate(const string& rawHeader) const {
-	return "";
+    string key = toLower(trim(rawHeader));
+
+    string standardKey;
+    if (translatorMap.get(key, standardKey))
+        return standardKey;
+
+    // Unknown column — caller decides what to do with it
+    return "";
 }
 
 // ----------------------------------------------------------------
