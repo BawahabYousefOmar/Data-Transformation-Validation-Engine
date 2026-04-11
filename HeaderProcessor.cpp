@@ -17,11 +17,23 @@ HeaderProcessor::HeaderProcessor() {
 // ----------------------------------------------------------------
 
 string HeaderProcessor::toLower(const string& str) const {
- 
+    string result = str;
+    transform(result.begin(), result.end(), result.begin(), ::tolower);
+    return result;
 }
 
 string HeaderProcessor::trim(const string& str) const {
- 
+    // Find the first non-whitespace character
+    int start = 0;
+    while (start < (int)str.size() && isspace((unsigned char)str[start]))
+        start++;
+
+    // Find the last non-whitespace character
+    int end = (int)str.size() - 1;
+    while (end >= start && isspace((unsigned char)str[end]))
+        end--;
+
+    return str.substr(start, end - start + 1);
 }
 
 // ----------------------------------------------------------------
