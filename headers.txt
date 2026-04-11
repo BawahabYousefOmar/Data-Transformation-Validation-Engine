@@ -1,0 +1,77 @@
+# ============================================================
+#  headers.txt  —  Column Name Translator
+#  Format:  raw_name=STANDARD_KEY
+#  Lines starting with '#' are comments and are ignored.
+#  Keys are case-insensitive on the left side (handled in code).
+#  You can add your own mappings at any time.
+#  Supported standard keys: ID, Name, GPA, Email, Phone
+# ============================================================
+
+# --- ID ---
+id=ID
+stud_id=ID
+student_id=ID
+studentid=ID
+id_num=ID
+id_number=ID
+student_num=ID
+student_number=ID
+s_id=ID
+sid=ID
+university_id=ID
+uni_id=ID
+national_id=ID
+ssn=ID
+
+# --- Name ---
+name=Name
+full_name=Name
+fullname=Name
+student_name=Name
+stud_name=Name
+first_name=Name
+firstname=Name
+last_name=Name
+lastname=Name
+fname=Name
+lname=Name
+given_name=Name
+
+# --- GPA ---
+gpa=GPA
+grade_point_average=GPA
+grade=GPA
+grades=GPA
+cgpa=GPA
+cumulative_gpa=GPA
+academic_score=GPA
+score=GPA
+average=GPA
+avg=GPA
+
+# --- Email ---
+email=Email
+e_mail=Email
+e-mail=Email
+email_address=Email
+mail=Email
+stud_email=Email
+student_email=Email
+university_email=Email
+uni_email=Email
+contact_email=Email
+
+# --- Phone ---
+phone=Phone
+phone_number=Phone
+phone_num=Phone
+phonenumber=Phone
+mobile=Phone
+mobile_number=Phone
+mobile_num=Phone
+cell=Phone
+cell_number=Phone
+telephone=Phone
+tel=Phone
+contact=Phone
+contact_number=Phone
