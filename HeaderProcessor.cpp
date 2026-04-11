@@ -43,7 +43,58 @@ string HeaderProcessor::trim(const string& str) const {
 // Lines starting with '#' or empty lines are skipped.
 // ----------------------------------------------------------------
 bool HeaderProcessor::loadFromFile(const string& filePath) {
-    
+    ifstream file(filePath);
+
+    if (!file.is_open()) {
+        cerr << "[HeaderProcessor] ERROR: Could not open file: " << filePath << "\n";
+        return false;
+    }
+
+    string line;
+    int lineNumber = 0;
+    int loadedCount = 0;
+
+    while (getline(file, line)) {
+        lineNumber++;
+
+        // Remove leading/trailing whitespace
+        line = trim(line);
+
+        // Skip empty lines and comment lines
+        if (line.empty() || line[0] == '#')
+            continue;
+
+        // Find the '=' separator
+        int separatorPos = line.find('=');
+
+        if (separatorPos == (int)string::npos) {
+            // Malformed line — warn but keep going
+            cerr << "[HeaderProcessor] WARNING: Skipping malformed line "
+                << lineNumber << ": \"" << line << "\"\n";
+            continue;
+        }
+
+        // Split into left (raw header) and right (standard key)
+        string rawHeader = trim(line.substr(0, separatorPos));
+        string standardKey = trim(line.substr(separatorPos + 1));
+
+        if (rawHeader.empty() || standardKey.empty()) {
+            cerr << "[HeaderProcessor] WARNING: Empty key or value on line "
+                << lineNumber << ". Skipping.\n";
+            continue;
+        }
+
+        // Store in lowercase so matching is case-insensitive
+        translatorMap.put(toLower(rawHeader), standardKey);
+        loadedCount++;
+
+    }
+
+    file.close();
+
+    cout << "[HeaderProcessor] Loaded " << loadedCount
+        << " header mappings from: " << filePath << "\n";
+    return true;
 }
 
 // ----------------------------------------------------------------
