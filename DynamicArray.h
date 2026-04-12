@@ -18,12 +18,12 @@ public:
     ~DynamicArray(); // destructor
 
     void add(T item); // appends item to the end of the array
-    T get(int index); // returns the element at index
+    T get(int index) const ; // returns the element at index
     T& operator[](int index); // returns a reference to the element at index
     void set(int index, T item); // replaces the element at index with item
     void removeAt(int index); // removes the element at index
-    int getSize(); // returns the number of elements
-    bool isEmpty(); // returns true if the array is empty
+    int getSize()const ; // returns the number of elements
+    bool isEmpty() const ; // returns true if the array is empty
 };
 
 template <typename T>
@@ -63,7 +63,7 @@ void DynamicArray<T>::add(T item) {
 }
 
 template <typename T>
-T DynamicArray<T>::get(int index) {
+T DynamicArray<T>::get(int index) const {
     if (index < 0 || index > size - 1)
         throw std::out_of_range("Index out of range");
 
@@ -100,12 +100,12 @@ void DynamicArray<T>::removeAt(int index) {
 }
 
 template <typename T>
-int DynamicArray<T>::getSize() {
+int DynamicArray<T>::getSize() const {
     return size;
 }
 
 template <typename T>
-bool DynamicArray<T>::isEmpty() {
+bool DynamicArray<T>::isEmpty() const {
     return size == 0;
 }
 

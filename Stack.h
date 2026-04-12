@@ -9,7 +9,7 @@ private:
     T* elements;
     int top;
     int capacity;
-
+    
     // doubles the capacity
     void resize();
 

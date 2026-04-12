@@ -42,6 +42,10 @@ public:
 
     const DynamicArray<HashMap<string>>& getRecords() const;
 
+    
+    const DynamicArray<string>& getStandardHeader() const;
+
+
     // Returns the total number of records accumulated.
     int getRecordCount() const;
 

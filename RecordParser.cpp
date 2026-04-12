@@ -114,6 +114,11 @@ const DynamicArray<HashMap<string>>& RecordParser::getRecords() const {
     return records;
 }
 
+const DynamicArray<string>& RecordParser::getStandardHeader() const
+{
+	return standardHeaders;
+}
+
 // ----------------------------------------------------------------
 // getRecordCount
 // ----------------------------------------------------------------
