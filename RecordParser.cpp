@@ -46,15 +46,19 @@ DynamicArray<string> RecordParser::splitLine(const string& line, char delimiter)
 void RecordParser::setHeader(const string& headerRow) {
     // Clear any previous file's header
     standardHeaders = DynamicArray<string>();
-
+	cout << "[DEBUG] setHeader called with header row: " << headerRow << "\n";
     DynamicArray<string> rawHeaders = splitLine(headerRow);
+    cout << "[DEBUG] splitLine done, size: " << rawHeaders.getSize() << "\n";
     int columnCount = rawHeaders.getSize();
 
     bool unknownFound = false;
 
     for (int i = 0; i < columnCount; i++) {
+        cout << "[DEBUG] processing column " << i << "\n";
         string raw = rawHeaders.get(i);
+        cout << "[DEBUG] raw header: " << raw << "\n";
         string translated = HeadProcess.translate(raw);
+        cout << "[DEBUG] translated: " << translated << "\n";
 
         if (translated.empty()) {
             if (!unknownFound) {
@@ -65,10 +69,12 @@ void RecordParser::setHeader(const string& headerRow) {
         }
 
         standardHeaders.add(translated);   // "" = skip this column in parseLine
+        cout << "[DEBUG] added to standardHeaders\n";
     }
-
     cout << "[RecordParser] Header set — "
          << columnCount << " column(s) found.\n";
+
+    cout << "[DEBUG] setHeader complete\n";
 }
 
 // ----------------------------------------------------------------
@@ -76,37 +82,44 @@ void RecordParser::setHeader(const string& headerRow) {
 // Maps each value to its standard key and appends to records.
 // ----------------------------------------------------------------
 void RecordParser::parseLine(const string& dataLine) {
-    // skip empty lines. 
     if (dataLine.empty())
         return;
 
+    cout << "[DEBUG] parseLine called with: " << dataLine << "\n";
+
     DynamicArray<string> values = splitLine(dataLine);
+    cout << "[DEBUG] splitLine done, values size: " << values.getSize() << "\n";
+
     int columnCount = standardHeaders.getSize();
+    cout << "[DEBUG] columnCount: " << columnCount << "\n";
 
     HashMap<string> record;
+    cout << "[DEBUG] HashMap created\n";
 
     for (int col = 0; col < columnCount; col++) {
+        cout << "[DEBUG] col " << col << "\n";
+
         string key = standardHeaders.get(col);
+        cout << "[DEBUG] key: " << key << "\n";
 
-        // Skip columns that had no translation
-        if (key.empty())
-            continue;
+        if (key.empty()) continue;
 
-		// avoid having less values than headers. If so, treat missing values as empty strings.
         string value;
         if (col < values.getSize()) {
-            value = values.get(col);
+            value = HeadProcess.trim(values.get(col));
         }
         else {
             value = "";
         }
+        cout << "[DEBUG] value: " << value << "\n";
 
         record.put(key, value);
+        cout << "[DEBUG] put done\n";
     }
 
     records.add(record);
+    cout << "[DEBUG] record added\n";
 }
-
 // ----------------------------------------------------------------
 // getRecords
 // ----------------------------------------------------------------

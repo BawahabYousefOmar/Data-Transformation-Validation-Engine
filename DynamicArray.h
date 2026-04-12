@@ -18,8 +18,9 @@ public:
     ~DynamicArray(); // destructor
 
     void add(T item); // appends item to the end of the array
-    T get(int index) const ; // returns the element at index
+    T& get(int index) const ; // returns the element at index
     T& operator[](int index); // returns a reference to the element at index
+    DynamicArray<T>& operator=(const DynamicArray<T>& other); // assignment operator
     void set(int index, T item); // replaces the element at index with item
     void removeAt(int index); // removes the element at index
     int getSize()const ; // returns the number of elements
@@ -63,8 +64,8 @@ void DynamicArray<T>::add(T item) {
 }
 
 template <typename T>
-T DynamicArray<T>::get(int index) const {
-    if (index < 0 || index > size - 1)
+T& DynamicArray<T>::get(int index) const {
+    if (index < 0 || index >= size)
         throw std::out_of_range("Index out of range");
 
     return data[index];
@@ -76,6 +77,22 @@ T& DynamicArray<T>::operator[](int index) {
         throw std::out_of_range("Index out of range");
 
     return data[index];
+}
+
+template <typename T>
+DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray<T>& other) {
+    if (this == &other) return *this; // self-assignment check
+
+    delete[] data;                    // free MY old memory
+
+    capacity = other.capacity;
+    size = other.size;
+    data = new T[capacity];           // allocate MY own new memory
+
+    for (int i = 0; i < size; i++)
+        data[i] = other.data[i];      // copy values one by one
+
+    return *this;
 }
 
 template <typename T>

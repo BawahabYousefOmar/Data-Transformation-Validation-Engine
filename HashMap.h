@@ -35,6 +35,9 @@ public:
 		
 	~HashMap(); //destuctor
 	
+	HashMap(const HashMap& other); //copy constructor
+	HashMap& operator=(const HashMap& other); //assignment operator
+
 	void put(string key, T value); //insert a rule
 	bool get(string key, T& value) const;		  // get a rule
 
@@ -66,7 +69,71 @@ HashMap<T>::HashMap(int capa) {
 }
 
 
+//-------------------------------- COPY CONSTRUCTOR -------------------------------
+template<typename T>
+HashMap<T>::HashMap(const HashMap<T>& other) {
+	capacity = other.capacity;
+	size = other.size;
+	factor = other.factor;
 
+	table = new Node * [capacity];
+	for (int i = 0; i < capacity; i++)
+		table[i] = nullptr;
+
+	for (int i = 0; i < capacity; i++) {
+		Node* current = other.table[i];
+		while (current != nullptr) {
+			// directly copy node without calling put()
+			Node* newNode = new Node(current->key, current->value);
+			newNode->next = table[i];
+			table[i] = newNode;
+			current = current->next;
+		}
+	}
+}
+
+
+
+//-------------------------------- ASSIGNMENT OPERATOR -------------------------------
+
+
+template<typename T>
+HashMap<T>& HashMap<T>::operator=(const HashMap<T>& other) {
+	if (this == &other) return *this;
+
+	// delete my current data
+	for (int i = 0; i < capacity; i++) {
+		Node* current = table[i];
+		while (current != nullptr) {
+			Node* prev = current;
+			current = current->next;
+			delete prev;
+		}
+	}
+	delete[] table;
+
+	// copy from other
+	capacity = other.capacity;
+	size = other.size;
+	factor = other.factor;
+
+	table = new Node * [capacity];
+	for (int i = 0; i < capacity; i++)
+		table[i] = nullptr;
+
+	// direct node copy — no put(), no rehash() risk
+	for (int i = 0; i < capacity; i++) {
+		Node* current = other.table[i];
+		while (current != nullptr) {
+			Node* newNode = new Node(current->key, current->value);
+			newNode->next = table[i];
+			table[i] = newNode;
+			current = current->next;
+		}
+	}
+
+	return *this;
+}
 //-------------------------------- DESTRUCTOR -------------------------------
 template<typename T>
 HashMap<T>::~HashMap() {

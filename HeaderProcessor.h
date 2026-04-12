@@ -21,11 +21,13 @@ private:
     // Converts a string to lowercase for case-insensitive matching
     string toLower(const string& str) const;
 
-    // Strips leading/trailing whitespace from a string
-    string trim(const string& str) const;
+    
 
 public:
     HeaderProcessor(); // default constructor
+
+    // Strips leading/trailing whitespace from a string
+    string trim(const string& str) const;
 
     // Reads headers.txt and populates the translator map.
     // Returns true on success, false if the file cannot be opened.
