@@ -1,0 +1,19 @@
+# ============================================================
+#  rules.txt — Validation Engine Configuration
+#  Format: FIELD.PROPERTY=VALUE
+# ============================================================
+
+# --- ID Rules ---
+ID.isRequired=true
+ID.expectedLength=9
+ID.requiredPrefix=900
+
+# --- GPA Rules ---
+GPA.minVal=0.0
+GPA.maxVal=4.0
+
+# --- Name Rules ---
+Name.isRequired=true
+
+# --- Email Rules ---
+Email.requiredSubstring=@
