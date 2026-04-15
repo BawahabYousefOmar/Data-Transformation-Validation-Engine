@@ -16,6 +16,8 @@ private:
 public:
     Stack(); // default constructor
     ~Stack(); // destructor
+    Stack(const Stack<T>& other); // copy constructor
+    Stack<T>& operator=(const Stack<T>& other); // assignment operator
 
     void push(T item); // pushes item onto the stack
     T pop(); // removes the top item and returns it
@@ -35,6 +37,32 @@ Stack<T>::Stack() {
 template <typename T>
 Stack<T>::~Stack() {
     delete[] elements;
+}
+
+template <typename T>
+Stack<T>::Stack(const Stack<T>& other) {
+    capacity = other.capacity;
+    top = other.top;
+    elements = new T[capacity];
+
+    for (int i = 0; i <= top; i++)
+        elements[i] = other.elements[i];
+}
+
+template <typename T>
+Stack<T>& Stack<T>::operator=(const Stack<T>& other) {
+    if (this == &other) return *this;
+
+    delete[] elements;
+
+    capacity = other.capacity;
+    top = other.top;
+    elements = new T[capacity];
+    
+    for (int i = 0; i <= top; i++)
+        elements[i] = other.elements[i];
+
+    return *this;
 }
 
 template <typename T>

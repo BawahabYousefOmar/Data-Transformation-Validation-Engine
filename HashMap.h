@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "DynamicArray.h"
 
 using namespace std;
 
@@ -44,6 +45,7 @@ public:
 	bool contains(string key) const;
 	int getSize() const { return size; };			//return the size fo the array
 	void setFactor(float f);// set the factor
+	DynamicArray<string> getKeys() const; // returns keys as a DynamicArray (no order)
 };
 
 //-------------------------------
@@ -121,7 +123,7 @@ HashMap<T>& HashMap<T>::operator=(const HashMap<T>& other) {
 	for (int i = 0; i < capacity; i++)
 		table[i] = nullptr;
 
-	// direct node copy — no put(), no rehash() risk
+	// direct node copy ï¿½ no put(), no rehash() risk
 	for (int i = 0; i < capacity; i++) {
 		Node* current = other.table[i];
 		while (current != nullptr) {
@@ -295,4 +297,21 @@ void HashMap<T>::setFactor(float f) {
 	factor = f; 
 }
 
-//------------------------
+//---------------------------- get Keys ------------------------
+template<typename T>
+DynamicArray<string> HashMap<T>::getKeys() const {
+    DynamicArray<string> keys;
+
+	// loop over table
+    for (int i = 0; i < capacity; i++) {
+        Node* current = table[i];
+
+		// add each key to the dynamic array
+        while (current != nullptr) {
+            keys.add(current->key);
+            current = current->next;
+        }
+    }
+
+    return keys;
+}
