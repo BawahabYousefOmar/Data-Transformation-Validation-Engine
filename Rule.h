@@ -8,11 +8,9 @@ using namespace std;
 class Rule {
 private:
     bool isRequired;           
-
     bool checkNumericRange;    
     float minVal;
     float maxVal;
-
     int expectedLength;        
 
     string requiredPrefix;     
