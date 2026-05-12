@@ -1,0 +1,429 @@
+<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI" FontSize="12">
+  <FlowDocument.Tag><![CDATA[{
+  "timestamp": "2026-05-12 16:01:33",
+  "files": {
+    "D:\\Mohammed AlKaf\\My Projects\\Data Transformation\\Data-Transformation-Validation-Engine\\Data-Transformation-Validation-Engine\\Data-Transformation-Validation-Engine.vcxproj": {
+      "before": "7VnbbuM2EN3nAv2EAoaQ1slDJCdOk00ja5G13axR54I4l5cFFrQ8sdVIpEBSWbvd/ntHIiVZvsQy0iTFIvsQrKnhcHh4eGZI/vLTu3f2h3HgVx6AC4/RhrFj1owKUJcNPDpsGJG8235vfHB+/MG+4OxPcGWlBXck8uUV4UOQomF8jDx/YFTQC8VfIynD3yxLuCMIiDADz+VMsDtpuiywBvAAPguBW4Hox92s3VqtbqD3SsXuSAhOOIvCSpf0wW8YesAmo3feMOJEYoBCGaP5oq+VDnX9aAANowX9aPjt1qP13bQH9im4chIb2yo2xqHE/+wLn8g7xgMncWJb2W9lgQ0Kj0XdVwR3CT4QASvC01avEaBCb7y/91Ts0MWzIPdYaKVxWzM428oYqgiLBEAqy0mBtCc+6xM/p+lNU/PkRu0wZ+fArNnWXLNm1R8w+cr4QJEu7mlbaZO20O5OIm/g/F2Hg19dl/S33x/uD7b3DqG2TQ7I3vY+qe8dkh1ySPYP/smomvTRbi4Zk2ckABESF5wWkeSKEypixicb7Yb43iD5X5sOPQq2Veyh3eDmGLCvQolBukWyqdbiqT5qErtJ4suR1GoQhIzLip5tw9jYvGlqybkgcrT1+TRTlmYYmlqUzBDXRBgVa9EK4U4deLGINIzqxmZh325929hMo9+qNhrVKf2oGqkgFbqkW6MoKleTEJzjMPQ9NwFvZvcmnzV01wKSUbpenxPugXAkjxDn+XbdIQ3wijFfgHQedvbq+e5KW7Vxc0Q4cSXwHlpeUw8FHX0XWpdij6Dny1FZB7aCsr0ccHe44/4z5G5HzAeEYMhJcB5KL/D+SpZSL8/Sz68KfKbYLwf698NWTAQvB9v3wtXOegJdFGbVuZA422MJNK5BUbAk1p46hWLWTQZKbKdTQ6FzD9UOBkqSy/VINa43AqxijbVUrpAckpgwic3jgULO46TZ8vhsuprKNmaEZmnemtJaGHtCik3MVGv7qW5lKavLXOJjPooTfJo/svRYCtqnADWTDt6gys4xSwqORIneYFoOU8qo7w+odJ8VdC3e+qckPkJnmzY+hGC169GklFXWU7KxXmWbUq3pN1kQej7oBtSzW8IpynA3PrI7yV8sNguNquBB016r2xyBe68rpOxnZnDBAfXfBSEYz2MXzm3nrL579KXV/nh9cvSleX7WO++2j37eXGK/FZ8UFnvKhopr9PgMQ104xZJXhzTbqms1a3bedtej9zkGvajfmwgE3EEHAstC28qbsiFPgALeTqhqvqOGj48Zeuyln9MgsjHVCTMHaDrnPXHV032TXGZU87PLk9b994i68UQTdsSzQL7oSS/8lCHWoZJ7mOzd1Cw9+yz4kHXKaKUKz+xnZrCMG4plZ28sU8x+RpZNnUJeWVneNEXr2DOudqophVw8q6jrZZJUD/7nivKmJeXYlScwpEHGjPyW3jQ/fwIyAI7Fj6oOTDcM01JnaZ+AeLSU4SW4eJl6QXh8xCrj+TLyocviiEqZ60tSVrBWOy6fev6wkWriGaNQAMEcYjE3pIzD1NznrCC5iH3M4rJ93DptmwE+x6gbUIRwzo2Q+EJCpTBd8VDGbnfacPXkmr5+hCnMsDWhBN+CjjknE3M0Nexi809EjE5JWNISbwzKWM4wbXUUij4lXBd4VsIvsqyM15yMq332JHHvSzjNKbvC5+zkV6/8FYxlYdFHCeLClGM5teJzZhznWTCaH2q9uyapnibTMfXVjDoq6bfF7LZJvyksvjrKXk6cfwE=",
+      "after": "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"
+    }
+  }
+}]]></FlowDocument.Tag>
+  <Section Margin="0,24" TextAlignment="Center">
+    <Paragraph FontSize="24" FontWeight="Bold" Margin="12,0">
+      <LineBreak />
+      <Span Foreground="Gray">Qt Visual Studio Tools</Span>
+    </Paragraph>
+    <Paragraph FontSize="42" Margin="12,0" FontWeight="Bold">
+      <Span TextDecorations="Underline">Project Format Conversion</Span>
+    </Paragraph>
+    <Paragraph Margin="12,8" FontSize="18">
+      <Span>Report generated on 2026-05-12 16:01:33</Span>
+    </Paragraph>
+  </Section>
+  <Section>
+    <Paragraph FontSize="32" FontWeight="Bold" Margin="12,0">
+      <Span>Files</Span>
+    </Paragraph>
+    <Paragraph Margin="24,12,0,0">
+      <Span FontFamily="Consolas" FontSize="14" Background="WhiteSmoke"><![CDATA[D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj]]></Span>
+      <LineBreak />
+      <Hyperlink NavigateUri="file://D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj?before">[Before]</Hyperlink>
+      <Hyperlink NavigateUri="file://D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj?after">[After]</Hyperlink>
+      <Hyperlink NavigateUri="file://D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj?diff&amp;before&amp;after">
+                        [Diff before/after]
+                    </Hyperlink>
+      <Hyperlink NavigateUri="file://D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj?diff&amp;before&amp;current">
+                        [Diff before/current]
+                    </Hyperlink>
+      <Hyperlink NavigateUri="file://D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj?diff&amp;after&amp;current">
+                        [Diff after/current]
+                    </Hyperlink>
+      <LineBreak />
+    </Paragraph>
+  </Section>
+  <Section>
+    <Paragraph FontSize="32" FontWeight="Bold" Margin="12,0">
+      <Span>Changes</Span>
+    </Paragraph>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Enabling multi-processor compilation]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[      <MultiProcessorCompilation>true</MultiProcessorCompilation>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[      <MultiProcessorCompilation>true</MultiProcessorCompilation>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[      <MultiProcessorCompilation>true</MultiProcessorCompilation>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[      <MultiProcessorCompilation>true</MultiProcessorCompilation>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Project format version]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Keyword>QtVS_v304</Keyword>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Fallback for QTMSBUILD environment variable]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Default Qt properties]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <Import Project="$(QtMsBuild)\qt_defaults.props" Condition="Exists('$(QtMsBuild)\qt_defaults.props')" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Qt build settings]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Warn if Qt/MSBuild is not found]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') OR !Exists('$(QtMsBuild)\Qt.props')">]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  </Target>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Qt property sheet]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Import Project="$(QtMsBuild)\Qt.props" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Import Project="$(QtMsBuild)\Qt.props" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Import Project="$(QtMsBuild)\Qt.props" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Import Project="$(QtMsBuild)\Qt.props" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Qt targets]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Mohammed AlKaf\My Projects\Data Transformation\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine\Data-Transformation-Validation-Engine.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <Import Project="$(QtMsBuild)\qt.targets" Condition="Exists('$(QtMsBuild)\qt.targets')" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+  </Section>
+  <Section>
+    <Paragraph />
+  </Section>
+</FlowDocument>
+<!--pX6r8AaLhnjs8QH9oAChxSaTnicFVubRqI7gLm54rRs=-->
