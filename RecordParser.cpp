@@ -1,6 +1,5 @@
 #include "RecordParser.h"
 #include <iostream>
-
 using namespace std;
 
 // ----------------------------------------------------------------
@@ -17,10 +16,8 @@ DynamicArray<string> RecordParser::splitLine(const string& line, char delimiter)
     DynamicArray<string> parts;
     string current = "";
     bool insideQuotes = false;
-
     for (int i = 0; i < (int)line.size(); i++) {
         char c = line[i];
-
         if (c == '"') {
             insideQuotes = !insideQuotes;       //  quote mode
         }
@@ -32,7 +29,6 @@ DynamicArray<string> RecordParser::splitLine(const string& line, char delimiter)
             current += c;
         }
     }
-
     parts.add(current);    // last part has no trailing delimiter
     return parts;
 }
@@ -46,20 +42,13 @@ DynamicArray<string> RecordParser::splitLine(const string& line, char delimiter)
 void RecordParser::setHeader(const string& headerRow) {
     // Clear any previous file's header
     standardHeaders = DynamicArray<string>();
-	cout << "[DEBUG] setHeader called with header row: " << headerRow << "\n";
+
     DynamicArray<string> rawHeaders = splitLine(headerRow);
-    cout << "[DEBUG] splitLine done, size: " << rawHeaders.getSize() << "\n";
     int columnCount = rawHeaders.getSize();
-
     bool unknownFound = false;
-
     for (int i = 0; i < columnCount; i++) {
-        cout << "[DEBUG] processing column " << i << "\n";
         string raw = rawHeaders.get(i);
-        cout << "[DEBUG] raw header: " << raw << "\n";
         string translated = HeadProcess.translate(raw);
-        cout << "[DEBUG] translated: " << translated << "\n";
-
         if (translated.empty()) {
             if (!unknownFound) {
                 cout << "[RecordParser] NOTE: Unknown columns will be skipped:\n";
@@ -67,14 +56,9 @@ void RecordParser::setHeader(const string& headerRow) {
             }
             cout << "   - \"" << raw << "\" (column " << i + 1 << ")\n";
         }
-
         standardHeaders.add(translated);   // "" = skip this column in parseLine
-        cout << "[DEBUG] added to standardHeaders\n";
     }
-    cout << "[RecordParser] Header set — "
-         << columnCount << " column(s) found.\n";
-
-    cout << "[DEBUG] setHeader complete\n";
+    cout << "[RecordParser] Header set — " << columnCount << " column(s) found.\n";
 }
 
 // ----------------------------------------------------------------
@@ -84,26 +68,12 @@ void RecordParser::setHeader(const string& headerRow) {
 void RecordParser::parseLine(const string& dataLine) {
     if (dataLine.empty())
         return;
-
-    cout << "[DEBUG] parseLine called with: " << dataLine << "\n";
-
     DynamicArray<string> values = splitLine(dataLine);
-    cout << "[DEBUG] splitLine done, values size: " << values.getSize() << "\n";
-
     int columnCount = standardHeaders.getSize();
-    cout << "[DEBUG] columnCount: " << columnCount << "\n";
-
     HashMap<string> record;
-    cout << "[DEBUG] HashMap created\n";
-
     for (int col = 0; col < columnCount; col++) {
-        cout << "[DEBUG] col " << col << "\n";
-
         string key = standardHeaders.get(col);
-        cout << "[DEBUG] key: " << key << "\n";
-
         if (key.empty()) continue;
-
         string value;
         if (col < values.getSize()) {
             value = HeadProcess.trim(values.get(col));
@@ -111,15 +81,11 @@ void RecordParser::parseLine(const string& dataLine) {
         else {
             value = "";
         }
-        cout << "[DEBUG] value: " << value << "\n";
-
         record.put(key, value);
-        cout << "[DEBUG] put done\n";
     }
-
     records.add(record);
-    cout << "[DEBUG] record added\n";
 }
+
 // ----------------------------------------------------------------
 // getRecords
 // ----------------------------------------------------------------
@@ -127,9 +93,8 @@ const DynamicArray<HashMap<string>>& RecordParser::getRecords() const {
     return records;
 }
 
-const DynamicArray<string>& RecordParser::getStandardHeader() const
-{
-	return standardHeaders;
+const DynamicArray<string>& RecordParser::getStandardHeader() const {
+    return standardHeaders;
 }
 
 // ----------------------------------------------------------------
