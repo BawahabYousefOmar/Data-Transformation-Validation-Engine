@@ -24,4 +24,6 @@ public:
 
     // Returns the fully built map of rules
     const HashMap<Rule>& getRulesMap() const;
+    //update rule 
+    void updateRule(const string& field, const Rule& newRule);
 };

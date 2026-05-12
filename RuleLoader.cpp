@@ -91,3 +91,6 @@
     const HashMap<Rule>& RuleLoader::getRulesMap() const {
         return rulesMap;
     }
+
+    void RuleLoader::updateRule(const string& field, const Rule& newRule)
+    { rulesMap.put(field, newRule); }
