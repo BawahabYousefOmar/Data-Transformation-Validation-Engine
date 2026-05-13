@@ -218,7 +218,7 @@
       <item>
        <widget class="QStackedWidget" name="pageStack">
 
-        <!-- PAGE 0: Upload & Validate (Mohammed's UploadWidget goes here) -->
+        <!-- Upload page -->
         <widget class="QWidget" name="pageUpload">
          <layout class="QVBoxLayout" name="pageUploadLayout">
           <property name="leftMargin"><number>24</number></property>
@@ -235,7 +235,7 @@
          </layout>
         </widget>
 
-        <!-- PAGE 1: Reports Table (Amro's ReportsTableWidget goes here) -->
+        <!-- Reports page -->
         <widget class="QWidget" name="pageReports">
          <layout class="QVBoxLayout" name="pageReportsLayout">
           <property name="leftMargin"><number>24</number></property>
@@ -251,7 +251,7 @@
          </layout>
         </widget>
 
-        <!-- PAGE 2: Standards Manager (Yousef's widget — admin only) -->
+        <!-- Standards manager (admin only) -->
         <widget class="QWidget" name="pageStandards">
          <layout class="QVBoxLayout" name="pageStandardsLayout">
           <property name="leftMargin"><number>24</number></property>

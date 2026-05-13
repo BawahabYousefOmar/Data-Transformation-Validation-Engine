@@ -6,7 +6,7 @@
 #include <QHeaderView>
 #include <QHBoxLayout>
 #include <QMessageBox>
-
+#include <QInputDialog>
 // ----------------------------------------------------------------
 // Constructor
 // ----------------------------------------------------------------
@@ -26,6 +26,8 @@ StandardsManagerWidget::StandardsManagerWidget(bool isAdmin, HeaderProcessor* he
 
     setupTable();
     populateTable();
+    connect(ui->addFieldBtn, &QPushButton::clicked, this, &StandardsManagerWidget::onAddNewFieldClicked);
+    connect(ui->saveDiskBtn, &QPushButton::clicked, this, &StandardsManagerWidget::onSaveToDiskClicked);
     applyStyleSheet();
 }
 
@@ -58,9 +60,14 @@ void StandardsManagerWidget::setupTable()
 void StandardsManagerWidget::populateTable()
 {
     ui->standardsTable->setRowCount(0);
+    //get rules names
+    DynamicArray<string> backendKeys = m_ruleLoader->getRulesMap().getKeys();
 
-    // The standard fields 
-    QStringList standardFields = { "ID", "Name", "GPA", "Email", "Phone" };
+    // append to the QStringList
+    QStringList standardFields;
+    for (int i = 0; i < backendKeys.getSize(); i++) {
+        standardFields.append(QString::fromStdString(backendKeys.get(i)));
+    }
 
     for (const QString& field : standardFields) {
         int row = ui->standardsTable->rowCount();
@@ -141,6 +148,38 @@ QString StandardsManagerWidget::buildRuleSummary(const QString& fieldName) const
     return conditions.isEmpty() ? "None" : conditions.join(" | ");
 }
 
+void StandardsManagerWidget::onAddNewFieldClicked()
+{
+    bool ok;
+    QString text = QInputDialog::getText(this, "Add New Standard Field",
+        "Enter the name of the new field (e.g. Department, Age):",
+        QLineEdit::Normal, "", &ok);
+
+    if (ok && !text.trimmed().isEmpty()) {
+        QString field = text.trimmed();
+
+        // Create a blank rule and add it to the backend
+        Rule newRule;
+        m_ruleLoader->updateRule(field.toStdString(), newRule);
+
+        // Refresh the table so it shows up immediately
+        populateTable();
+
+        // Automatically open the editor
+        openRuleEditor(field);
+    }
+}
+
+void StandardsManagerWidget::onSaveToDiskClicked()
+{
+    // Call the new backend function we just wrote
+    if (m_ruleLoader->saveToFile("rules.txt")) {
+        QMessageBox::information(this, "Success", "All rules have been successfully saved to rules.txt!");
+    }
+    else {
+        QMessageBox::critical(this, "Error", "Failed to save to rules.txt. Check file permissions.");
+    }
+}
 void StandardsManagerWidget::applyStyleSheet()
 {
     setStyleSheet(R"(
@@ -183,6 +222,37 @@ void StandardsManagerWidget::applyStyleSheet()
         QPushButton#editRuleBtn:hover {
             background-color: #00BCD4;
             color: #000;
+        }
+        
+        /* --- NEW BUTTON STYLES --- */
+        
+        /* Secondary Button Style */
+        QPushButton#addFieldBtn {
+            background: transparent;
+            border: 1px solid palette(mid);
+            border-radius: 6px;
+            padding: 0px 16px;
+            font-size: 12px;
+            font-weight: bold;
+            color: palette(text);
+        }
+        QPushButton#addFieldBtn:hover {
+            border-color: #00BCD4;
+            color: #00BCD4;
+        }
+        
+        /* Primary Action Button Style */
+        QPushButton#saveDiskBtn {
+            background-color: #00BCD4;
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            padding: 0px 16px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        QPushButton#saveDiskBtn:hover {
+            background-color: #26C6DA;
         }
     )");
 }

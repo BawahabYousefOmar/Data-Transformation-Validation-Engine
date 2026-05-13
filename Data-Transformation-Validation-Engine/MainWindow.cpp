@@ -103,13 +103,13 @@ void MainWindow::onOpenDetails(const QString& batchId)
     if (!m_batches.contains(batchId)) return;
 
     // ReportDetailsWindow goes here.
-   
+   // Retrieve the specific batch data
+    const BatchRecord& batch = m_batches.value(batchId);
 
-    // Placeholder message until Yousef's window is ready:
-    QMessageBox::information(this, "Details",
-        QString("Details window for batch:\n%1\n\n"
-                "(Connect ReportDetailsWindow here — Yousef's component)")
-        .arg(batchId));
+    ReportDetailsWindow* detailsWindow = new ReportDetailsWindow(batch, this);
+
+   // Show the non-modal window
+    detailsWindow->show();
 }
 
 void MainWindow::onOpenNote(const QString& batchId)
@@ -233,7 +233,7 @@ void MainWindow::setStatus(const QString& message)
 // ----------------------------------------------------------------
 QString MainWindow::buildBatchId(const QString& batchName) const
 {
-    QString ts = QDateTime::currentDateTime().toString("yyyy_MM_dd_hh:mm:ss");
+    QString ts = QDateTime::currentDateTime().toString("yyyy_MM_dd_hh-mm-ss");
     return batchName + "_" + ts;
 }
 
