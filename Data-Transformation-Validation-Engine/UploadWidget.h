@@ -58,4 +58,6 @@ private:
 
     // Applies stylesheet for drop zone highlight / normal state
     void setDropHighlight(bool active);
+
+    void applyStyleSheet(); 
 };

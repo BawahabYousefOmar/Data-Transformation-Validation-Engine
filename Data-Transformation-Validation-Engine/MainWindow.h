@@ -3,6 +3,7 @@
 #include <QMainWindow>
 #include <QString>
 #include <QStringList>
+#include <QPushButton.h>
 
 // Backend includes
 #include "HeaderProcessor.h"

@@ -78,3 +78,66 @@ void HeaderMappingDialog::onConfirmClicked()
 {
     accept();
 }
+
+void HeaderMappingDialog::applyStyleSheet()
+{
+    setStyleSheet(R"(
+        QDialog {
+            background: palette(window);
+        }
+        QLabel#titleLabel {
+            font-size: 14px;
+            font-weight: bold;
+            color: palette(text);
+        }
+        QLabel#warningIconLabel {
+            font-size: 22px;
+            color: #FFB300;
+        }
+        QLabel#descriptionLabel {
+            font-size: 12px;
+            color: palette(text);
+        }
+        QLabel#unknownColumnKeyLabel {
+            font-size: 12px;
+            color: palette(mid);
+        }
+        QLabel#unknownColumnValueLabel {
+            font-size: 13px;
+            font-weight: bold;
+            font-family: monospace;
+            color: #FF7043;
+        }
+        QRadioButton {
+            font-size: 12px;
+        }
+        QComboBox {
+            font-size: 12px;
+            padding: 4px 8px;
+            border: 1px solid palette(mid);
+            border-radius: 4px;
+        }
+        QPushButton#confirmButton {
+            background-color: #00BCD4;
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 20px;
+            font-weight: bold;
+        }
+        QPushButton#confirmButton:hover {
+            background-color: #26C6DA;
+        }
+        QPushButton#applyToAllButton {
+            background: transparent;
+            border: 1px solid palette(mid);
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+        QPushButton#applyToAllButton:hover {
+            border-color: #00BCD4;
+            color: #00BCD4;
+        }
+    )");
+}
