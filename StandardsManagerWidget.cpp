@@ -1,6 +1,8 @@
 #include "StandardsManagerWidget.h"
 #include "ui_StandardsManagerWidget.h"
 #include "RuleEditorDialog.h"
+#include "HeaderMappingDialog.h"
+
 
 #include <QPushButton>
 #include <QHeaderView>
@@ -28,6 +30,7 @@ StandardsManagerWidget::StandardsManagerWidget(bool isAdmin, HeaderProcessor* he
     populateTable();
     connect(ui->addFieldBtn, &QPushButton::clicked, this, &StandardsManagerWidget::onAddNewFieldClicked);
     connect(ui->saveDiskBtn, &QPushButton::clicked, this, &StandardsManagerWidget::onSaveToDiskClicked);
+    connect(ui->standardsTable, &QTableWidget::cellClicked, this, &StandardsManagerWidget::onCellClicked);//when cell clicked
     applyStyleSheet();
 }
 
@@ -138,10 +141,12 @@ QString StandardsManagerWidget::buildRuleSummary(const QString& fieldName) const
         return "None";
     }
 
+    
+    
     QStringList conditions;
     if (r.getIsRequired()) conditions << "Required";
     if (r.getExpectedLength() != -1) conditions << QString("Length: %1").arg(r.getExpectedLength());
-    if (r.getCheckNumericRange()) conditions << QString("Range: [%1 - %2]").arg(r.getMinVal() == -9999999.0f?0:r.getMinVal()).arg(r.getMaxVal()==9999999.0f ? 0 : r.getMaxVal());;
+    if (r.getCheckNumericRange()) conditions << QString("Range: [%1 - %2]").arg(r.getMinVal() == -9999999.0f?0:r.getMinVal()).arg(r.getMaxVal()==9999999.0f ? 0 : r.getMaxVal());
     if (!r.getRequiredPrefix().empty()) conditions << QString("Prefix: '%1'").arg(QString::fromStdString(r.getRequiredPrefix()));
     if (!r.getRequiredSubstring().empty()) conditions << QString("Contains: '%1'").arg(QString::fromStdString(r.getRequiredSubstring()));
 
@@ -180,6 +185,20 @@ void StandardsManagerWidget::onSaveToDiskClicked()
         QMessageBox::critical(this, "Error", "Failed to save to rules.txt. Check file permissions.");
     }
 }
+
+void StandardsManagerWidget::onCellClicked(int row, int column)
+{
+    // Check if the user clicked specifically in Column 1 (the Mapped Alias column)
+    if (column == 1) {
+      
+        QString fieldName = ui->standardsTable->item(row, 0)->text();
+        // Pop open the mapping dialog
+        HeaderMappingDialog dialog(fieldName, this);
+        dialog.exec();
+    }
+}
+
+
 void StandardsManagerWidget::applyStyleSheet()
 {
     setStyleSheet(R"(
