@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ReportDetailsWindow</class>
+ <widget class="QMainWindow" name="ReportDetailsWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Batch Details</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>12</number>
+    </property>
+    <property name="leftMargin">
+     <number>20</number>
+    </property>
+    <property name="topMargin">
+     <number>20</number>
+    </property>
+    <property name="rightMargin">
+     <number>20</number>
+    </property>
+    <property name="bottomMargin">
+     <number>20</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="batchNameLabel">
+      <property name="text">
+       <string>Batch: unknown</string>
+      </property>
+      <property name="objectName">
+       <string>batchNameLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="statsLabel">
+      <property name="text">
+       <string>Total: 0  |  Valid: 0  |  Invalid: 0</string>
+      </property>
+      <property name="objectName">
+       <string>statsLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="dataTable">
+      <property name="objectName">
+       <string>dataTable</string>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnExportValid">
+        <property name="text">
+         <string>↓ Export Valid (CSV)</string>
+        </property>
+        <property name="objectName">
+         <string>btnExportValid</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnExportInvalid">
+        <property name="text">
+         <string>↓ Export Invalid Data (CSV)</string>
+        </property>
+        <property name="objectName">
+         <string>btnExportInvalid</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnExportReport">
+        <property name="text">
+         <string>⚠ Download Invalid Report w/ Errors</string>
+        </property>
+        <property name="objectName">
+         <string>btnExportReport</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
