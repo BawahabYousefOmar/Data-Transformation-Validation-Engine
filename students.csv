@@ -5,8 +5,4 @@ stud_id,full_name,gpa,e_mail,mobile_number,department
 900221101,Youssef Tarek,3.5,y.tarek@university.edu,01234567890,IT
 900221104,"Smith, John",4.0,john.s@university.edu,01311223344,CS
 900221105,Nour Ibrahim,,nour.i@university.edu,01412345678,IT
-900221106,Manal Mohammed,3.8,manmoh@university.edu,01598765432,CS
-900221107,Karim Samir,5.2,k.samir@university.edu,01612345678,CS
-900221108,Dina Mostafa,-1.0,dina.m@university.edu,01723456789,IT
-900221109,Hana Youssef,3.1,hanayoussef-bademail,01834567890,CS
-9002211,Omar Short,2.9,omar.s@university.edu,01945678901,IT
+900234736, Manal Mohammed, 3.8, manmoh@university.edu, 01598765432, CS
