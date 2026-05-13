@@ -36,7 +36,7 @@
 				<number>0</number>
 			</property>
 
-			<!-- LEFT PANEL: Brand / Hero -->
+
 			<item>
 				<widget class="QFrame" name="leftPanel">
 					<property name="minimumWidth">
@@ -131,7 +131,6 @@
 							</spacer>
 						</item>
 
-						<!-- Decorative stat chips -->
 						<item>
 							<widget class="QFrame" name="statChip1">
 								<layout class="QHBoxLayout">
@@ -284,7 +283,7 @@
 				</widget>
 			</item>
 
-			<!-- RIGHT PANEL: Login Form -->
+	
 			<item>
 				<widget class="QFrame" name="rightPanel">
 					<layout class="QVBoxLayout" name="rightLayout">
@@ -348,7 +347,7 @@
 							</spacer>
 						</item>
 
-						<!-- Username -->
+				
 						<item>
 							<widget class="QLabel" name="usernameLabel">
 								<property name="text">
@@ -391,7 +390,7 @@
 							</spacer>
 						</item>
 
-						<!-- Password -->
+						
 						<item>
 							<widget class="QLabel" name="passwordLabel">
 								<property name="text">
@@ -437,7 +436,7 @@
 							</spacer>
 						</item>
 
-						<!-- Error label (hidden by default) -->
+						
 						<item>
 							<widget class="QLabel" name="errorLabel">
 								<property name="text">
@@ -463,7 +462,7 @@
 							</spacer>
 						</item>
 
-						<!-- Sign In Button -->
+						
 						<item>
 							<widget class="QPushButton" name="signInButton">
 								<property name="text">

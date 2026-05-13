@@ -1,6 +1,9 @@
 #pragma once
 
 #include <string>
+#include <functional>
+
+
 #include "DynamicArray.h"
 #include "HashMap.h"
 #include "HeaderProcessor.h"
@@ -16,11 +19,20 @@ using namespace std;
 //  keys: ID, Name, GPA, Email, Phone.
 // ============================================================
 
+
+//// Callback type: given an unknown raw column name, returns:
+//   - the standard key to use ("ID", "Name", etc.), OR
+//   - "" to skip the column
+using UnknownHeaderCallback = function<string(const string& rawColumn)>;
+
+
 class RecordParser {
 private:
     HeaderProcessor& HeadProcess;            // reference to the loaded translator
     DynamicArray<string> standardHeaders;  // translated column order for current file
     DynamicArray<HashMap<string>> records; // all accumulated records across all files
+
+    UnknownHeaderCallback m_unknownHeaderCb = nullptr;
 
     // Splits a CSV line into parts, handles quoted fields e.g. "Smith, John"
     DynamicArray<string> splitLine(const string& line, char delimiter = ',') const;
@@ -42,7 +54,7 @@ public:
 
     const DynamicArray<HashMap<string>>& getRecords() const;
 
-    
+
     const DynamicArray<string>& getStandardHeader() const;
 
 
@@ -50,6 +62,9 @@ public:
     int getRecordCount() const;
 
     // Clears all records and resets the header.
-    
+
     void reset();
+
+    // Add a setter for the callback:
+    void setUnknownHeaderCallback(UnknownHeaderCallback cb);
 };

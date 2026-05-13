@@ -44,4 +44,6 @@ public:
 
     // Returns the number of mappings loaded
     int getMappingCount() const;
+
+    bool addMappingToFile(const string& filePath, const string& rawHeader, const string& standardKey);
 };

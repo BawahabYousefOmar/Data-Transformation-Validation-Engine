@@ -1,6 +1,6 @@
 #include "UploadWidget.h"
 #include "ui_UploadWidget.h"
-//#include "BatchNameDialog.h"
+#include "BatchNameDialog.h"
 
 #include <QFileDialog>
 #include <QMimeData>

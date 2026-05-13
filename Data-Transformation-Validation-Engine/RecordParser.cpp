@@ -112,4 +112,10 @@ void RecordParser::reset() {
     records = DynamicArray<HashMap<string>>();
     standardHeaders = DynamicArray<string>();
     cout << "[RecordParser] Parser reset.\n";
+	setUnknownHeaderCallback(nullptr);
+}
+
+void RecordParser::setUnknownHeaderCallback(UnknownHeaderCallback cb)
+{
+    this->m_unknownHeaderCb = cb;
 }
