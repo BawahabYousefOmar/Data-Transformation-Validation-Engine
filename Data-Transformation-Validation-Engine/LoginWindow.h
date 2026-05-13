@@ -34,6 +34,7 @@ public:
     // True   logged-in user has Admin privileges
     // False  Worker 
     bool isAdmin() const;
+	QString username() const;
 
 private slots:
     void onSignInClicked();

@@ -6,7 +6,7 @@
 #include "NoteDialog.h"
 #include "HeaderMappingDialog.h"
 #include "StandardsManagerWidget.h"
-// #include "ReportDetailsWindow.h"
+#include "ReportDetailsWindow.h"
 
 #include <QDateTime>
 #include <QMessageBox>
@@ -61,6 +61,8 @@ MainWindow::~MainWindow()
     delete m_ruleLoader;
     delete ui;
 }
+
+
 
 // ================================================================
 // Public Slots

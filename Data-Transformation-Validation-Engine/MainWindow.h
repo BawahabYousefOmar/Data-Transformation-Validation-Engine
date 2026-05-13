@@ -18,6 +18,7 @@
 // Forward declarations 
 class UploadWidget;
 class ReportsTableWidget;
+class StandardsManagerWidget;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -55,7 +56,7 @@ public:
     explicit MainWindow(bool isAdmin, const QString& username,
                         QWidget* parent = nullptr);
     ~MainWindow();
-
+    
 public slots:
     // Connected to UploadWidget::filesReadyForValidation
     void onRunPipeline(QStringList filePaths, QString batchName);
@@ -74,11 +75,13 @@ private:
     Ui::MainWindow* ui;
 
     bool    m_isAdmin;
-    QString m_username;
+	QString m_username;
+    
 
     // Child widgets embedded into the page stack
     UploadWidget*       m_uploadWidget   = nullptr;
     ReportsTableWidget* m_reportsWidget  = nullptr;
+    StandardsManagerWidget* m_standardsWidget = nullptr;
 
     // In-memory store of processed batches
     QMap<QString, BatchRecord> m_batches;

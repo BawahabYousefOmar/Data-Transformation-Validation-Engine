@@ -1,5 +1,6 @@
 ﻿#include "LoginWindow.h"
 #include "ui_LoginWindow.h"
+#include "MainWindow.h"
 
 #include "UserManager.h"
 
@@ -50,6 +51,13 @@ bool LoginWindow::isAdmin() const
 {
     return m_adminRole;
 }
+
+QString LoginWindow::username() const
+{
+    return ui->usernameInput->text();
+}
+
+
 
 // ----------------------------------------------------------------
 // Private Slots
