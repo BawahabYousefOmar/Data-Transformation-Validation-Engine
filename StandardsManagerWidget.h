@@ -25,6 +25,7 @@ private slots:
     void openRuleEditor(const QString& fieldName);
     void onAddNewFieldClicked(); 
     void onSaveToDiskClicked();
+    void onCellClicked(int row, int column);
 private:
     Ui::StandardsManagerWidget* ui;
     bool m_isAdmin;
