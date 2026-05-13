@@ -3,7 +3,7 @@
 #include <QMainWindow>
 #include <QString>
 #include <QStringList>
-
+#include <QPushButton>
 // Backend includes
 #include "HeaderProcessor.h"
 #include "RecordParser.h"
@@ -17,6 +17,7 @@
 // Forward declarations 
 class UploadWidget;
 class ReportsTableWidget;
+class StandardsManagerWidget;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -78,6 +79,7 @@ private:
     // Child widgets embedded into the page stack
     UploadWidget*       m_uploadWidget   = nullptr;
     ReportsTableWidget* m_reportsWidget  = nullptr;
+    StandardsManagerWidget* m_standardsWidget = nullptr;
 
     // In-memory store of processed batches
     QMap<QString, BatchRecord> m_batches;

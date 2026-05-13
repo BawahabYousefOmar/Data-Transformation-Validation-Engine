@@ -6,7 +6,7 @@
 #include "NoteDialog.h"
 #include "HeaderMappingDialog.h"
 #include "StandardsManagerWidget.h"
-// #include "ReportDetailsWindow.h"
+#include "ReportDetailsWindow.h"
 
 #include <QDateTime>
 #include <QMessageBox>
@@ -33,13 +33,13 @@ MainWindow::MainWindow(bool isAdmin, const QString& username, QWidget* parent)
 
     // Load shared backend resources once at startup
     m_headerProcessor = new HeaderProcessor();
-    if (!m_headerProcessor->loadFromFile("headers.txt")) {
+    if (!m_headerProcessor->loadFromFile("C:\\Users\\WinDows\\Downloads\\Amro\\headers.txt")) {
         QMessageBox::critical(this, "Startup Error",
             "Could not load headers.txt.\nMake sure it is in the working directory.");
     }
 
     m_ruleLoader = new RuleLoader();
-    if (!m_ruleLoader->loadFromFile("rules.txt")) {
+    if (!m_ruleLoader->loadFromFile("C:\\Users\\WinDows\\Downloads\\Amro\\rules.txt")) {
         QMessageBox::critical(this, "Startup Error",
             "Could not load rules.txt.\nMake sure it is in the working directory.");
     }
@@ -101,13 +101,13 @@ void MainWindow::onOpenDetails(const QString& batchId)
     if (!m_batches.contains(batchId)) return;
 
     // ReportDetailsWindow goes here.
-   
+   // Retrieve the specific batch data
+    const BatchRecord& batch = m_batches.value(batchId);
 
-    // Placeholder message until Yousef's window is ready:
-    QMessageBox::information(this, "Details",
-        QString("Details window for batch:\n%1\n\n"
-                "(Connect ReportDetailsWindow here — Yousef's component)")
-        .arg(batchId));
+    ReportDetailsWindow* detailsWindow = new ReportDetailsWindow(batch, this);
+
+   // Show the non-modal window
+    detailsWindow->show();
 }
 
 void MainWindow::onOpenNote(const QString& batchId)
@@ -231,7 +231,7 @@ void MainWindow::setStatus(const QString& message)
 // ----------------------------------------------------------------
 QString MainWindow::buildBatchId(const QString& batchName) const
 {
-    QString ts = QDateTime::currentDateTime().toString("yyyy_MM_dd_hh:mm:ss");
+    QString ts = QDateTime::currentDateTime().toString("yyyy_MM_dd_hh-mm-ss");
     return batchName + "_" + ts;
 }
 

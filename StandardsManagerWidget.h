@@ -23,7 +23,8 @@ public:
 
 private slots:
     void openRuleEditor(const QString& fieldName);
-
+    void onAddNewFieldClicked(); 
+    void onSaveToDiskClicked();
 private:
     Ui::StandardsManagerWidget* ui;
     bool m_isAdmin;

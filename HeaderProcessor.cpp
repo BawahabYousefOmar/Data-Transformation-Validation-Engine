@@ -128,3 +128,18 @@ const HashMap<string>& HeaderProcessor::getTranslatorMap() const {
 int HeaderProcessor::getMappingCount() const {
     return translatorMap.getSize();
 }
+
+bool HeaderProcessor::addMappingToFile(const string& filePath, const string& rawHeader, const string& standardKey) {
+    // 1. Open file in append mode
+    ofstream file(filePath, ios::app);
+    if (!file.is_open()) return false;
+
+    // 2. Write the new mapping
+    file << "\n" << rawHeader << "=" << standardKey;
+    file.close();
+
+    // 3. Update the live map so we don't have to reload the whole file
+    translatorMap.put(toLower(trim(rawHeader)), standardKey);
+
+    return true;
+}

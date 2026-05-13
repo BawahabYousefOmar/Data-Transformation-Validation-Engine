@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui version="4.0">
+	<class>UploadWidget</class>
+	<widget class="QWidget" name="UploadWidget">
+		<property name="geometry">
+			<rect>
+				<x>0</x>
+				<y>0</y>
+				<width>820</width>
+				<height>600</height>
+			</rect>
+		</property>
+		<property name="windowTitle">
+			<string>File Upload</string>
+		</property>
+		<layout class="QHBoxLayout" name="mainLayout">
+			<property name="spacing">
+				<number>16</number>
+			</property>
+			<property name="leftMargin">
+				<number>20</number>
+			</property>
+			<property name="topMargin">
+				<number>20</number>
+			</property>
+			<property name="rightMargin">
+				<number>20</number>
+			</property>
+			<property name="bottomMargin">
+				<number>20</number>
+			</property>
+
+
+			<item>
+				<widget class="QFrame" name="dropZoneFrame">
+					<property name="sizePolicy">
+						<sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+							<horstretch>3</horstretch>
+							<verstretch>0</verstretch>
+						</sizepolicy>
+					</property>
+					<property name="frameShape">
+						<enum>QFrame::StyledPanel</enum>
+					</property>
+					<property name="objectName">
+						<string>dropZoneFrame</string>
+					</property>
+					<layout class="QVBoxLayout" name="dropZoneLayout">
+						<property name="spacing">
+							<number>12</number>
+						</property>
+						<item>
+							<spacer name="topSpacer">
+								<property name="orientation">
+									<enum>Qt::Vertical</enum>
+								</property>
+								<property name="sizeHint" stdset="0">
+									<size>
+										<width>20</width>
+										<height>40</height>
+									</size>
+								</property>
+							</spacer>
+						</item>
+						<item>
+							<widget class="QLabel" name="dropIconLabel">
+								<property name="text">
+									<string>⬆</string>
+								</property>
+								<property name="alignment">
+									<set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+								</property>
+								<property name="objectName">
+									<string>dropIconLabel</string>
+								</property>
+							</widget>
+						</item>
+						<item>
+							<widget class="QLabel" name="dropMainLabel">
+								<property name="text">
+									<string>Drag &amp; Drop Files Here</string>
+								</property>
+								<property name="alignment">
+									<set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+								</property>
+								<property name="objectName">
+									<string>dropMainLabel</string>
+								</property>
+							</widget>
+						</item>
+						<item>
+							<widget class="QLabel" name="dropSubLabel">
+								<property name="text">
+									<string>Accepts .csv and .txt files</string>
+								</property>
+								<property name="alignment">
+									<set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+								</property>
+								<property name="objectName">
+									<string>dropSubLabel</string>
+								</property>
+							</widget>
+						</item>
+						<item>
+							<layout class="QHBoxLayout">
+								<item>
+									<spacer>
+										<property name="orientation">
+											<enum>Qt::Horizontal</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>40</width>
+												<height>20</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+								<item>
+									<widget class="QLabel" name="orDividerLabel">
+										<property name="text">
+											<string>— or —</string>
+										</property>
+										<property name="alignment">
+											<set>Qt::AlignHCenter</set>
+										</property>
+										<property name="objectName">
+											<string>orDividerLabel</string>
+										</property>
+									</widget>
+								</item>
+								<item>
+									<spacer>
+										<property name="orientation">
+											<enum>Qt::Horizontal</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>40</width>
+												<height>20</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+							</layout>
+						</item>
+						<item>
+							<layout class="QHBoxLayout">
+								<item>
+									<spacer>
+										<property name="orientation">
+											<enum>Qt::Horizontal</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>40</width>
+												<height>20</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+								<item>
+									<widget class="QPushButton" name="browseButton">
+										<property name="text">
+											<string>Browse Files</string>
+										</property>
+										<property name="minimumSize">
+											<size>
+												<width>140</width>
+												<height>38</height>
+											</size>
+										</property>
+										<property name="objectName">
+											<string>browseButton</string>
+										</property>
+									</widget>
+								</item>
+								<item>
+									<spacer>
+										<property name="orientation">
+											<enum>Qt::Horizontal</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>40</width>
+												<height>20</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+							</layout>
+						</item>
+						<item>
+							<spacer name="bottomSpacer">
+								<property name="orientation">
+									<enum>Qt::Vertical</enum>
+								</property>
+								<property name="sizeHint" stdset="0">
+									<size>
+										<width>20</width>
+										<height>40</height>
+									</size>
+								</property>
+							</spacer>
+						</item>
+					</layout>
+				</widget>
+			</item>
+
+	
+			<item>
+				<widget class="QFrame" name="queueFrame">
+					<property name="sizePolicy">
+						<sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+							<horstretch>2</horstretch>
+							<verstretch>0</verstretch>
+						</sizepolicy>
+					</property>
+					<property name="minimumWidth">
+						<number>240</number>
+					</property>
+					<property name="frameShape">
+						<enum>QFrame::StyledPanel</enum>
+					</property>
+					<property name="objectName">
+						<string>queueFrame</string>
+					</property>
+					<layout class="QVBoxLayout" name="queueLayout">
+						<property name="spacing">
+							<number>10</number>
+						</property>
+						<property name="leftMargin">
+							<number>12</number>
+						</property>
+						<property name="topMargin">
+							<number>16</number>
+						</property>
+						<property name="rightMargin">
+							<number>12</number>
+						</property>
+						<property name="bottomMargin">
+							<number>16</number>
+						</property>
+
+			
+						<item>
+							<layout class="QHBoxLayout">
+								<item>
+									<widget class="QLabel" name="queueTitleLabel">
+										<property name="text">
+											<string>Upload Queue</string>
+										</property>
+										<property name="objectName">
+											<string>queueTitleLabel</string>
+										</property>
+									</widget>
+								</item>
+								<item>
+									<spacer>
+										<property name="orientation">
+											<enum>Qt::Horizontal</enum>
+										</property>
+										<property name="sizeHint" stdset="0">
+											<size>
+												<width>20</width>
+												<height>0</height>
+											</size>
+										</property>
+									</spacer>
+								</item>
+								<item>
+									<widget class="QPushButton" name="clearQueueButton">
+										<property name="text">
+											<string>Clear</string>
+										</property>
+										<property name="maximumWidth">
+											<number>60</number>
+										</property>
+										<property name="objectName">
+											<string>clearQueueButton</string>
+										</property>
+									</widget>
+								</item>
+							</layout>
+						</item>
+
+			
+						<item>
+							<widget class="QFrame" name="queueDivider">
+								<property name="frameShape">
+									<enum>QFrame::HLine</enum>
+								</property>
+								<property name="frameShadow">
+									<enum>QFrame::Sunken</enum>
+								</property>
+							</widget>
+						</item>
+
+	
+						<item>
+							<widget class="QListWidget" name="fileQueueList">
+								<property name="objectName">
+									<string>fileQueueList</string>
+								</property>
+								<property name="selectionMode">
+									<enum>QAbstractItemView::SingleSelection</enum>
+								</property>
+								<property name="alternatingRowColors">
+									<bool>true</bool>
+								</property>
+							</widget>
+						</item>
+
+						
+						<item>
+							<widget class="QLabel" name="fileCountLabel">
+								<property name="text">
+									<string>0 file(s) queued</string>
+								</property>
+								<property name="alignment">
+									<set>Qt::AlignRight</set>
+								</property>
+								<property name="objectName">
+									<string>fileCountLabel</string>
+								</property>
+							</widget>
+						</item>
+
+					
+						<item>
+							<widget class="QPushButton" name="validateButton">
+								<property name="text">
+									<string>▶  Validate Batch</string>
+								</property>
+								<property name="minimumHeight">
+									<number>44</number>
+								</property>
+								<property name="objectName">
+									<string>validateButton</string>
+								</property>
+								<property name="enabled">
+									<bool>false</bool>
+								</property>
+							</widget>
+						</item>
+
+					</layout>
+				</widget>
+			</item>
+
+		</layout>
+	</widget>
+	<resources/>
+	<connections/>
+</ui>
