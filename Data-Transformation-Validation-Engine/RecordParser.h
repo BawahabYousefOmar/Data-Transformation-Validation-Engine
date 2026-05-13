@@ -28,7 +28,7 @@ private:
 
     UnknownHeaderCallback m_unknownHeaderCb = nullptr;
 
-    UnknownHeaderCallback m_unknownHeaderCb = nullptr;
+
 
     // Splits a CSV line into parts, handles quoted fields e.g. "Smith, John"
     DynamicArray<string> splitLine(const string& line, char delimiter = ',') const;

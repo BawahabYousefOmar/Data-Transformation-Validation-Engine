@@ -13,6 +13,7 @@ private:
 
     string toLower(const string& str) const;
 
+
 public:
     HeaderProcessor();
 
@@ -26,11 +27,13 @@ public:
     // Returns an empty string "" if the column is unknown.
     string translate(const string& rawHeader) const;
 
+    string trim(const string& str) const;
+
     const HashMap<string>& getTranslatorMap() const;
 
 
     // Returns the number of mappings loaded
     int getMappingCount() const;
 
-    bool addMappingToFile(const string& filePath, const string& rawHeader, const string& standardKey);
+    
 };
