@@ -33,13 +33,13 @@ MainWindow::MainWindow(bool isAdmin, const QString& username, QWidget* parent)
 
     // Load shared backend resources once at startup
     m_headerProcessor = new HeaderProcessor();
-    if (!m_headerProcessor->loadFromFile("C:\\Users\\WinDows\\Downloads\\Amro\\headers.txt")) {
+    if (!m_headerProcessor->loadFromFile("headers.txt")) {
         QMessageBox::critical(this, "Startup Error",
             "Could not load headers.txt.\nMake sure it is in the working directory.");
     }
 
     m_ruleLoader = new RuleLoader();
-    if (!m_ruleLoader->loadFromFile("C:\\Users\\WinDows\\Downloads\\Amro\\rules.txt")) {
+    if (!m_ruleLoader->loadFromFile("rules.txt")) {
         QMessageBox::critical(this, "Startup Error",
             "Could not load rules.txt.\nMake sure it is in the working directory.");
     }
