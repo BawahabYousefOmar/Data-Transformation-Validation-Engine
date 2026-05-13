@@ -14,8 +14,11 @@ SOURCES += \
     MainWindow.cpp \
     NoteDialog.cpp \
     RecordParser.cpp \
+    ReportDetailsWindow.cpp \
     ReportsTableWidget.cpp \
+    RuleEditorDialog.cpp \
     RuleLoader.cpp \
+    StandardsManagerWidget.cpp \
     UploadWidget.cpp \
     Validator.cpp
 
@@ -31,10 +34,13 @@ HEADERS += \
     NoteDialog.h \
     Record.h \
     RecordParser.h \
+    ReportDetailsWindow.h \
     ReportsTableWidget.h \
     Rule.h \
+    RuleEditorDialog.h \
     RuleLoader.h \
     Stack.h \
+    StandardsManagerWidget.h \
     UploadWidget.h \
     Validator.h
 
@@ -44,5 +50,8 @@ FORMS += \
     LoginWindow.ui \
     MainWindow.ui \
     NoteDialog.ui \
+    ReportDetailsWindow.ui \
     ReportsTableWidget.ui \
+    RuleEditorDialog.ui \
+    StandardsManagerWidget.ui \
     UploadWidget.ui

@@ -17,6 +17,7 @@ public:
     HeaderProcessor();
 
     bool loadFromFile(const string& filePath);
+    bool addMappingToFile(const string& filePath, const string& rawHeader, const string& standardKey);
 
     string translate(const string& rawHeader) const;
 

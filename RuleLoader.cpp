@@ -1,4 +1,5 @@
     #include "RuleLoader.h"
+    #include "DynamicArray.h"
     #include <fstream>
     #include <iostream>
 
@@ -90,4 +91,26 @@
     //get Rule in the hashMap
     const HashMap<Rule>& RuleLoader::getRulesMap() const {
         return rulesMap;
+    }
+
+    void RuleLoader::updateRule(const string& field, const Rule& newRule)
+    { rulesMap.put(field, newRule); }
+
+    bool RuleLoader::saveToFile(const string& filePath) const {
+        ofstream file(filePath);
+        if (!file.is_open()) return false;
+        file << "# Rules configuration\n\n";
+        DynamicArray<string> keys = rulesMap.getKeys();
+        for (int i = 0; i < keys.getSize(); i++) {
+            const string& field = keys.get(i);
+            Rule r; rulesMap.get(field, r);
+            file << field << ".isRequired=" << (r.getIsRequired() ? "true" : "false") << "\n";
+            if (r.getExpectedLength() > 0)      file << field << ".expectedLength=" << r.getExpectedLength() << "\n";
+            if (!r.getRequiredPrefix().empty())  file << field << ".requiredPrefix=" << r.getRequiredPrefix() << "\n";
+            if (!r.getRequiredSubstring().empty()) file << field << ".requiredSubstring=" << r.getRequiredSubstring() << "\n";
+            if (r.getMinVal() != 0.0f)           file << field << ".minVal=" << r.getMinVal() << "\n";
+            if (r.getMaxVal() != 0.0f)           file << field << ".maxVal=" << r.getMaxVal() << "\n";
+            file << "\n";
+        }
+        return true;
     }

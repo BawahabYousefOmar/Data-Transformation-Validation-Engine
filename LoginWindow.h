@@ -18,6 +18,7 @@ public:
 
     // true = admin (full access), false = worker
     bool isAdmin() const;
+    QString username() const;
 
 private slots:
     void onSignInClicked();
@@ -26,6 +27,7 @@ private slots:
 private:
     Ui::LoginWindow* ui;
     bool m_adminRole = false;
+    QString m_username;
 
     bool authenticate(const QString& username, const QString& password);
 

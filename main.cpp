@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
         if (login.exec() != QDialog::Accepted)
             break;
 
-        MainWindow* mainWin = new MainWindow(login.isAdmin(), QString());
+        MainWindow* mainWin = new MainWindow(login.isAdmin(), login.username());
         mainWin->setAttribute(Qt::WA_DeleteOnClose);
         mainWin->show();
 

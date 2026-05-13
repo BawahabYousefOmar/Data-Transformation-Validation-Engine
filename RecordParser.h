@@ -13,6 +13,13 @@ using namespace std;
 
 using UnknownHeaderCallback = function<string(const string& rawColumn)>;
 
+
+//// Callback type: given an unknown raw column name, returns:
+//   - the standard key to use ("ID", "Name", etc.), OR
+//   - "" to skip the column
+using UnknownHeaderCallback = function<string(const string& rawColumn)>;
+
+
 class RecordParser {
 private:
     HeaderProcessor& HeadProcess;

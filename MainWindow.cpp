@@ -5,46 +5,22 @@
 #include "ReportsTableWidget.h"
 #include "NoteDialog.h"
 #include "HeaderMappingDialog.h"
-
-// #include "StandardsManagerWidget.h"
+#include "StandardsManagerWidget.h"
+#include "ReportDetailsWindow.h"
 
 #include <QDateTime>
 #include <QMessageBox>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QApplication>
-#include <QCoreApplication>
-#include <QDir>
-#include <QFile>
-#include <QFileInfo>
 #include <fstream>
 #include <string>
 
 using namespace std;
 
-namespace {
-
-QString pathToBundledFile(const QString& fileName)
-{
-    const QString roots[] = {
-        QCoreApplication::applicationDirPath(),
-        QDir::currentPath(),
-    };
-    for (const QString& root : roots) {
-        QDir dir(root);
-        for (int i = 0; i < 12; ++i) {
-            const QString candidate = dir.filePath(fileName);
-            if (QFileInfo::exists(candidate))
-                return QFileInfo(candidate).absoluteFilePath();
-            if (!dir.cdUp())
-                break;
-        }
-    }
-    return {};
-}
-
-} // namespace
-
+// ================================================================
+// Constructor
+// ================================================================
 MainWindow::MainWindow(bool isAdmin, const QString& username, QWidget* parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -55,22 +31,15 @@ MainWindow::MainWindow(bool isAdmin, const QString& username, QWidget* parent)
     setWindowTitle("DataValve — Data Validation Engine");
     resize(1280, 800);
 
+    // Load shared backend resources once at startup
     m_headerProcessor = new HeaderProcessor();
-    const QString headersPath = pathToBundledFile(QStringLiteral("headers.txt"));
-    const std::string headersStd = headersPath.isEmpty()
-        ? std::string("headers.txt")
-        : std::string(QFile::encodeName(headersPath).constData());
-    if (!m_headerProcessor->loadFromFile(headersStd)) {
+    if (!m_headerProcessor->loadFromFile("headers.txt")) {
         QMessageBox::critical(this, "Startup Error",
             "Could not load headers.txt.\nMake sure it is in the working directory.");
     }
 
     m_ruleLoader = new RuleLoader();
-    const QString rulesPath = pathToBundledFile(QStringLiteral("rules.txt"));
-    const std::string rulesStd = rulesPath.isEmpty()
-        ? std::string("rules.txt")
-        : std::string(QFile::encodeName(rulesPath).constData());
-    if (!m_ruleLoader->loadFromFile(rulesStd)) {
+    if (!m_ruleLoader->loadFromFile("rules.txt")) {
         QMessageBox::critical(this, "Startup Error",
             "Could not load rules.txt.\nMake sure it is in the working directory.");
     }
@@ -79,9 +48,13 @@ MainWindow::MainWindow(bool isAdmin, const QString& username, QWidget* parent)
     setupSidebar();
     applyStyleSheet();
 
+    // Start on Upload page
     onNavUpload();
 }
 
+// ================================================================
+// Destructor
+// ================================================================
 MainWindow::~MainWindow()
 {
     delete m_headerProcessor;
@@ -89,7 +62,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-// Runs validation after the user picks files and a batch name on the upload page.
+// ================================================================
+// Public Slots
+// ================================================================
+
+
 void MainWindow::onRunPipeline(QStringList filePaths, QString batchName)
 {
     if (filePaths.isEmpty()) return;
@@ -99,10 +76,13 @@ void MainWindow::onRunPipeline(QStringList filePaths, QString batchName)
 
     QString batchId = buildBatchId(batchName);
 
+    // Run the backend pipeline
     BatchRecord result = runValidationPipeline(filePaths, batchId);
 
+    // Store the batch
     m_batches.insert(batchId, result);
 
+    // Tell the reports table about the new batch
     if (m_reportsWidget)
         m_reportsWidget->addBatch(result);
 
@@ -112,6 +92,7 @@ void MainWindow::onRunPipeline(QStringList filePaths, QString batchName)
               .arg(result.validCount)
               .arg(result.invalidCount));
 
+    // Auto-switch to reports page
     onNavReports();
 }
 
@@ -119,8 +100,14 @@ void MainWindow::onOpenDetails(const QString& batchId)
 {
     if (!m_batches.contains(batchId)) return;
 
-    QMessageBox::information(this, "Details",
-        QString("Batch details view is not implemented yet.\n\nBatch: %1").arg(batchId));
+    // ReportDetailsWindow goes here.
+   // Retrieve the specific batch data
+    const BatchRecord& batch = m_batches.value(batchId);
+
+    ReportDetailsWindow* detailsWindow = new ReportDetailsWindow(batch, this);
+
+   // Show the non-modal window
+    detailsWindow->show();
 }
 
 void MainWindow::onOpenNote(const QString& batchId)
@@ -130,9 +117,13 @@ void MainWindow::onOpenNote(const QString& batchId)
     BatchRecord& batch = m_batches[batchId];
     NoteDialog dlg(batch.batchId, batch.noteFilePath, this);
     if (dlg.exec() == QDialog::Accepted) {
-        batch.noteFilePath = dlg.noteFilePath();
+        batch.noteFilePath = dlg.noteFilePath(); // may have been created
     }
 }
+
+// ================================================================
+// Private Slots — Navigation
+// ================================================================
 
 void MainWindow::onNavUpload()
 {
@@ -159,19 +150,27 @@ void MainWindow::onNavStandards()
 
 void MainWindow::onLogout()
 {
+    // Hide main window, re-show login
     close();
 }
 
+// ================================================================
+// Private Helpers
+// ================================================================
+
 void MainWindow::setupWidgets()
 {
+    // ── Upload page ──────────────────────────────────────────
     m_uploadWidget = new UploadWidget(this);
+    // Replace the placeholder label with the real widget
     QLayout* uploadLayout = ui->pageUpload->layout();
-    delete uploadLayout->takeAt(0)->widget();
+    delete uploadLayout->takeAt(0)->widget(); // remove placeholder label
     uploadLayout->addWidget(m_uploadWidget);
 
     connect(m_uploadWidget, &UploadWidget::filesReadyForValidation,
             this, &MainWindow::onRunPipeline);
 
+    // ── Reports page ──────────────────────────────────────────
     m_reportsWidget = new ReportsTableWidget(this);
     QLayout* reportsLayout = ui->pageReports->layout();
     delete reportsLayout->takeAt(0)->widget();
@@ -181,18 +180,27 @@ void MainWindow::setupWidgets()
             this, &MainWindow::onOpenDetails);
     connect(m_reportsWidget, &ReportsTableWidget::noteRequested,
             this, &MainWindow::onOpenNote);
+
+    // ── Standards page ────────────────────────────────────────
+    m_standardsWidget = new StandardsManagerWidget(m_isAdmin, m_headerProcessor, m_ruleLoader, this);
+    QLayout* stdLayout = ui->pageStandards->layout();
+    delete stdLayout->takeAt(0)->widget();
+    stdLayout->addWidget(m_standardsWidget);
 }
 
 void MainWindow::setupSidebar()
 {
+    // Populate user badge
     ui->userNameLabel->setText(m_username);
     ui->userRoleLabel->setText(m_isAdmin ? "Admin" : "Worker");
 
+    // Hide admin section entirely for workers
     if (!m_isAdmin) {
         ui->sectionAdminLabel->setVisible(false);
         ui->navStandardsBtn->setVisible(false);
     }
 
+    // Connect navigation buttons
     connect(ui->navUploadBtn,    &QPushButton::clicked, this, &MainWindow::onNavUpload);
     connect(ui->navReportsBtn,   &QPushButton::clicked, this, &MainWindow::onNavReports);
     connect(ui->navStandardsBtn, &QPushButton::clicked, this, &MainWindow::onNavStandards);
@@ -207,6 +215,7 @@ void MainWindow::setActivePage(int pageIndex, const QString& heading)
 
 void MainWindow::setNavButtonActive(QPushButton* activeBtn)
 {
+    // Clear checked state from all nav buttons, then set the active one
     for (QPushButton* btn : {ui->navUploadBtn, ui->navReportsBtn, ui->navStandardsBtn}) {
         btn->setChecked(btn == activeBtn);
     }
@@ -217,12 +226,18 @@ void MainWindow::setStatus(const QString& message)
     ui->statusBarLabel->setText(message);
 }
 
+// ----------------------------------------------------------------
+// buildBatchId — combines name + timestamp into a unique batch ID
+// ----------------------------------------------------------------
 QString MainWindow::buildBatchId(const QString& batchName) const
 {
-    QString ts = QDateTime::currentDateTime().toString("yyyy_MM_dd_hh:mm:ss");
+    QString ts = QDateTime::currentDateTime().toString("yyyy_MM_dd_hh-mm-ss");
     return batchName + "_" + ts;
 }
 
+// ----------------------------------------------------------------
+// runValidationPipeline — wraps the C++ backend pipeline
+// ----------------------------------------------------------------
 BatchRecord MainWindow::runValidationPipeline(const QStringList& filePaths,
                                                const QString& batchId)
 {
@@ -232,15 +247,18 @@ BatchRecord MainWindow::runValidationPipeline(const QStringList& filePaths,
     result.timestamp  = QDateTime::currentDateTime().toString(Qt::ISODate);
     result.noteFilePath = "note_" + batchId + ".txt";
 
+    // ── Build parser with unknown-header callback ─────────
     RecordParser parser(*m_headerProcessor);
 
     parser.setUnknownHeaderCallback([this](const string& rawCol) -> string {
+        // Show Mohammed's HeaderMappingDialog on the main thread
         HeaderMappingDialog dlg(QString::fromStdString(rawCol), this);
         if (dlg.exec() != QDialog::Accepted) return "";
         if (dlg.shouldSkip()) return "";
         return dlg.mappedKey().toStdString();
     });
 
+    // ── Feed each file through the parser ─────────────────
     for (const QString& path : filePaths) {
         std::ifstream file(path.toStdString());
         if (!file.is_open()) {
@@ -258,6 +276,7 @@ BatchRecord MainWindow::runValidationPipeline(const QStringList& filePaths,
     const DynamicArray<HashMap<string>>& allRecords = parser.getRecords();
     result.totalRecords = allRecords.getSize();
 
+    // ── Validate ───────────────────────────────────────────
     Validator validator;
     HashSet<string> seenIds;
     const HashMap<Rule>& rules = m_ruleLoader->getRulesMap();
@@ -275,6 +294,7 @@ BatchRecord MainWindow::runValidationPipeline(const QStringList& filePaths,
             result.invalidRecords.append(qrec);
             result.invalidCount++;
 
+            // Collect errors from the stack into a QStringList
             QStringList errList;
             while (!errors.isEmpty())
                 errList.prepend(QString::fromStdString(errors.pop()));
@@ -285,6 +305,9 @@ BatchRecord MainWindow::runValidationPipeline(const QStringList& filePaths,
     return result;
 }
 
+// ----------------------------------------------------------------
+// hashMapToQMap — converts HashMap<string> → QMap<QString,QString>
+// ----------------------------------------------------------------
 QMap<QString,QString> MainWindow::hashMapToQMap(const HashMap<string>& hm)
 {
     QMap<QString,QString> out;
@@ -298,15 +321,20 @@ QMap<QString,QString> MainWindow::hashMapToQMap(const HashMap<string>& hm)
     return out;
 }
 
+// ================================================================
+// applyStyleSheet
+// ================================================================
 void MainWindow::applyStyleSheet()
 {
     setStyleSheet(R"(
-        /* Main window */
+        /* ── Application background ── */
         QMainWindow, QWidget#centralWidget {
             background: palette(window);
         }
 
-        /* Sidebar */
+        /* ══════════════════════════════════════════════
+           SIDEBAR
+        ══════════════════════════════════════════════ */
         QFrame#sidebar {
             background-color: #0D1117;
             border-right: 1px solid #1E2A35;
@@ -418,7 +446,9 @@ void MainWindow::applyStyleSheet()
             background-color: rgba(239, 83, 80, 0.08);
         }
 
-        /* Top bar */
+        /* ══════════════════════════════════════════════
+           TOP BAR
+        ══════════════════════════════════════════════ */
         QFrame#topBar {
             background: palette(window);
             border-bottom: 1px solid palette(mid);
@@ -437,7 +467,9 @@ void MainWindow::applyStyleSheet()
             font-family: "Courier New", monospace;
         }
 
-        /* Status bar */
+        /* ══════════════════════════════════════════════
+           STATUS BAR
+        ══════════════════════════════════════════════ */
         QFrame#statusBar {
             background: palette(window);
             border-top: 1px solid palette(mid);
@@ -454,12 +486,14 @@ void MainWindow::applyStyleSheet()
             font-family: "Courier New", monospace;
         }
 
-        /* Page stack */
+        /* ══════════════════════════════════════════════
+           PAGE CONTENT AREA
+        ══════════════════════════════════════════════ */
         QStackedWidget#pageStack {
             background: palette(window);
         }
 
-        /* Labels replaced at runtime when pages get their real widgets */
+        /* Placeholder labels (shown until real widgets inject) */
         QLabel#uploadPlaceholderLabel,
         QLabel#reportsPlaceholderLabel,
         QLabel#standardsPlaceholderLabel {

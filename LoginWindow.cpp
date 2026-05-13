@@ -35,6 +35,11 @@ bool LoginWindow::isAdmin() const
     return m_adminRole;
 }
 
+QString LoginWindow::username() const
+{
+    return m_username;
+}
+
 void LoginWindow::onSignInClicked()
 {
     QString user = ui->usernameInput->text().trimmed();
@@ -42,6 +47,7 @@ void LoginWindow::onSignInClicked()
 
     if (authenticate(user, pass)) {
         clearError();
+        m_username = user;
         accept();
     } else {
         showError("Invalid username or password. Please try again.");

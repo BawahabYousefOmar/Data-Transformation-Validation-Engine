@@ -94,7 +94,16 @@ public:
             }
         }
 
-        // If it survives all checks, it's valid!
+        // If it survives all, it's valid!
         return true;
     }
+
+    // getters
+    bool getIsRequired() const { return isRequired; }
+    bool getCheckNumericRange() const { return checkNumericRange; }
+    float getMinVal() const { return minVal; }
+    float getMaxVal() const { return maxVal; }
+    int getExpectedLength() const { return expectedLength; }
+    string getRequiredPrefix() const { return requiredPrefix; }
+    string getRequiredSubstring() const { return requiredSubstring; }
 };
