@@ -1,0 +1,141 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\WinDows\\Source\\Repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\ReportDetailsWindow.cpp||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ReportDetailsWindow.cpp||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\ReportDetailsWindow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ReportDetailsWindow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\MainWindow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MainWindow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\MainWindow.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MainWindow.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\HashMap.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HashMap.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\Validator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Validator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\Validator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Validator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d3750d8a-574b-4fb3-b7e2-aa8af40e8231}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReportDetailsWindow.cpp",
+              "DocumentMoniker": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\ReportDetailsWindow.cpp",
+              "RelativeDocumentMoniker": "ReportDetailsWindow.cpp",
+              "ToolTip": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\ReportDetailsWindow.cpp",
+              "RelativeToolTip": "ReportDetailsWindow.cpp",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-13T11:32:36.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReportDetailsWindow.h",
+              "DocumentMoniker": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\ReportDetailsWindow.h",
+              "RelativeDocumentMoniker": "ReportDetailsWindow.h",
+              "ToolTip": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\ReportDetailsWindow.h",
+              "RelativeToolTip": "ReportDetailsWindow.h",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-13T11:30:51.501Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.h",
+              "DocumentMoniker": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\MainWindow.h",
+              "RelativeDocumentMoniker": "MainWindow.h",
+              "ToolTip": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\MainWindow.h",
+              "RelativeToolTip": "MainWindow.h",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAAAGQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-12T22:11:19.878Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.cpp",
+              "DocumentMoniker": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\MainWindow.cpp",
+              "RelativeDocumentMoniker": "MainWindow.cpp",
+              "ToolTip": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\MainWindow.cpp",
+              "RelativeToolTip": "MainWindow.cpp",
+              "ViewState": "AQIAAOcAAAAAAAAAAAAAALcAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-12T22:05:09.234Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Validator.cpp",
+              "DocumentMoniker": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\Validator.cpp",
+              "RelativeDocumentMoniker": "Validator.cpp",
+              "ToolTip": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\Validator.cpp",
+              "RelativeToolTip": "Validator.cpp",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAACwAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T17:33:59.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Validator.h",
+              "DocumentMoniker": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\Validator.h",
+              "RelativeDocumentMoniker": "Validator.h",
+              "ToolTip": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\Validator.h",
+              "RelativeToolTip": "Validator.h",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T17:34:00.657Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HashMap.h",
+              "DocumentMoniker": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\HashMap.h",
+              "RelativeDocumentMoniker": "HashMap.h",
+              "ToolTip": "C:\\Users\\WinDows\\source\\repos\\BawahabYousefOmar\\Data-Transformation-Validation-Engine\\HashMap.h",
+              "RelativeToolTip": "HashMap.h",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-25T17:15:19.067Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
