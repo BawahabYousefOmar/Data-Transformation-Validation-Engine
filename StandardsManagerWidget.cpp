@@ -141,7 +141,7 @@ QString StandardsManagerWidget::buildRuleSummary(const QString& fieldName) const
     QStringList conditions;
     if (r.getIsRequired()) conditions << "Required";
     if (r.getExpectedLength() != -1) conditions << QString("Length: %1").arg(r.getExpectedLength());
-    if (r.getCheckNumericRange()) conditions << QString("Range: [%1 - %2]").arg(r.getMinVal()).arg(r.getMaxVal());
+    if (r.getCheckNumericRange()) conditions << QString("Range: [%1 - %2]").arg(r.getMinVal() == -9999999.0f?0:r.getMinVal()).arg(r.getMaxVal()==9999999.0f ? 0 : r.getMaxVal());;
     if (!r.getRequiredPrefix().empty()) conditions << QString("Prefix: '%1'").arg(QString::fromStdString(r.getRequiredPrefix()));
     if (!r.getRequiredSubstring().empty()) conditions << QString("Contains: '%1'").arg(QString::fromStdString(r.getRequiredSubstring()));
 
