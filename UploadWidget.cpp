@@ -9,41 +9,116 @@
 #include <QListWidgetItem>
 #include <QMessageBox>
 
-// ----------------------------------------------------------------
-// Constructor
-// ----------------------------------------------------------------
 UploadWidget::UploadWidget(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::UploadWidget)
 {
     ui->setupUi(this);
 
-    // Enable drop events on this widget
     setAcceptDrops(true);
 
+    setStyleSheet(R"(
+        QFrame#dropZoneFrame {
+            border: 2px dashed palette(mid);
+            border-radius: 12px;
+            background: palette(base);
+        }
+        QFrame#dropZoneFrame[dropActive="true"] {
+            border: 2px dashed #00BCD4;
+            background: rgba(0, 188, 212, 0.07);
+        }
+        QLabel#dropIconLabel {
+            font-size: 48px;
+            color: palette(mid);
+        }
+        QLabel#dropMainLabel {
+            font-size: 16px;
+            font-weight: bold;
+            color: palette(text);
+        }
+        QLabel#dropSubLabel {
+            font-size: 12px;
+            color: palette(mid);
+        }
+        QLabel#orDividerLabel {
+            font-size: 12px;
+            color: palette(mid);
+        }
+        QPushButton#browseButton {
+            background-color: palette(button);
+            border: 1px solid palette(mid);
+            border-radius: 6px;
+            padding: 6px 18px;
+            font-size: 13px;
+        }
+        QPushButton#browseButton:hover {
+            background-color: #00BCD4;
+            color: #000;
+            border-color: #00BCD4;
+        }
+        QFrame#queueFrame {
+            border: 1px solid palette(mid);
+            border-radius: 10px;
+            background: palette(window);
+        }
+        QLabel#queueTitleLabel {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        QPushButton#clearQueueButton {
+            background: transparent;
+            border: 1px solid palette(mid);
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 11px;
+            color: palette(mid);
+        }
+        QPushButton#clearQueueButton:hover {
+            color: #E57373;
+            border-color: #E57373;
+        }
+        QListWidget#fileQueueList {
+            border: 1px solid palette(mid);
+            border-radius: 6px;
+            background: palette(base);
+            font-size: 12px;
+        }
+        QLabel#fileCountLabel {
+            font-size: 11px;
+            color: palette(mid);
+        }
+        QPushButton#validateButton {
+            background-color: #00BCD4;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 8px 0;
+        }
+        QPushButton#validateButton:hover {
+            background-color: #26C6DA;
+        }
+        QPushButton#validateButton:disabled {
+            background-color: palette(mid);
+            color: palette(dark);
+        }
+    )");
 
-
-
-    connect(ui->browseButton, &QPushButton::clicked, this, &UploadWidget::onBrowseClicked);
+    connect(ui->browseButton,     &QPushButton::clicked, this, &UploadWidget::onBrowseClicked);
     connect(ui->clearQueueButton, &QPushButton::clicked, this, &UploadWidget::onClearQueueClicked);
-    connect(ui->validateButton, &QPushButton::clicked, this, &UploadWidget::onValidateClicked);
-    connect(ui->fileQueueList, &QListWidget::itemSelectionChanged,
-        this, &UploadWidget::onQueueSelectionChanged);
+    connect(ui->validateButton,   &QPushButton::clicked, this, &UploadWidget::onValidateClicked);
+    connect(ui->fileQueueList,    &QListWidget::itemSelectionChanged,
+            this, &UploadWidget::onQueueSelectionChanged);
 
     refreshQueueUI();
 }
 
-// ----------------------------------------------------------------
-// Destructor
-// ----------------------------------------------------------------
 UploadWidget::~UploadWidget()
 {
     delete ui;
 }
 
-// ----------------------------------------------------------------
-// Public API
-// ----------------------------------------------------------------
 QStringList UploadWidget::queuedFiles() const
 {
     return m_filePaths;
@@ -56,9 +131,6 @@ void UploadWidget::clearQueue()
     refreshQueueUI();
 }
 
-// ----------------------------------------------------------------
-// Drag & Drop Events
-// ----------------------------------------------------------------
 void UploadWidget::dragEnterEvent(QDragEnterEvent* event)
 {
     if (event->mimeData()->hasUrls()) {
@@ -82,14 +154,11 @@ void UploadWidget::dropEvent(QDropEvent* event)
     event->acceptProposedAction();
 }
 
-// ----------------------------------------------------------------
-// Private Slots
-// ----------------------------------------------------------------
 void UploadWidget::onBrowseClicked()
 {
     QStringList paths = QFileDialog::getOpenFileNames(
         this,
-        tr("Select Student Data Files"),
+        tr("Select data files"),
         QString(),
         tr("Data Files (*.csv *.txt);;CSV Files (*.csv);;Text Files (*.txt);;All Files (*)")
     );
@@ -107,32 +176,25 @@ void UploadWidget::onValidateClicked()
 {
     if (m_filePaths.isEmpty()) return;
 
-    // Show the batch naming dialog
     BatchNameDialog dlg(this);
     if (dlg.exec() != QDialog::Accepted) return;
 
     QString batchName = dlg.batchName();
     if (batchName.trimmed().isEmpty()) {
         QMessageBox::warning(this, tr("Invalid Name"),
-            tr("Please enter a valid batch name."));
+                             tr("Please enter a valid batch name."));
         return;
     }
 
-    //  MainWindow pipeline picks this up
     emit filesReadyForValidation(m_filePaths, batchName.trimmed());
 
-    // Clear queue after dispatching
     clearQueue();
 }
 
 void UploadWidget::onQueueSelectionChanged()
 {
-    // Reserved for future: allow removing a specific item via keyboard
 }
 
-// ----------------------------------------------------------------
-// Private Helpers
-// ----------------------------------------------------------------
 void UploadWidget::addFile(const QString& filePath)
 {
     if (filePath.isEmpty()) return;
@@ -140,23 +202,20 @@ void UploadWidget::addFile(const QString& filePath)
     QFileInfo info(filePath);
     QString ext = info.suffix().toLower();
 
-    // Only accept .csv and .txt
     if (ext != "csv" && ext != "txt") {
         QMessageBox::warning(this, tr("Unsupported File"),
             tr("Only .csv and .txt files are accepted.\n\n'%1' was skipped.").arg(info.fileName()));
         return;
     }
 
-    // Prevent duplicates
     if (m_filePaths.contains(filePath)) return;
 
     m_filePaths.append(filePath);
 
-    // Add a list item showing only the file name; store full path as UserRole
     QListWidgetItem* item = new QListWidgetItem(
-        QString("  %1  ·  %2").arg(info.fileName()).arg(
+        QString("  %1  Â·  %2").arg(info.fileName()).arg(
             info.size() < 1024 ? QString("%1 B").arg(info.size())
-            : QString("%1 KB").arg(info.size() / 1024))
+                               : QString("%1 KB").arg(info.size() / 1024))
     );
     item->setData(Qt::UserRole, filePath);
     item->setToolTip(filePath);
@@ -174,72 +233,8 @@ void UploadWidget::refreshQueueUI()
 
 void UploadWidget::setDropHighlight(bool active)
 {
-    // Use a dynamic property + stylesheet rule so Qt re-evaluates the style
     ui->dropZoneFrame->setProperty("dropActive", active);
     ui->dropZoneFrame->style()->unpolish(ui->dropZoneFrame);
     ui->dropZoneFrame->style()->polish(ui->dropZoneFrame);
     ui->dropZoneFrame->update();
-}
-
-void UploadWidget::applyStyleSheet()
-{
-    setStyleSheet(R"(
-        QDialog {
-            background: palette(window);
-        }
-        QLabel#titleLabel {
-            font-size: 14px;
-            font-weight: bold;
-            color: palette(text);
-        }
-        QLabel#warningIconLabel {
-            font-size: 22px;
-            color: #FFB300;
-        }
-        QLabel#descriptionLabel {
-            font-size: 12px;
-            color: palette(text);
-        }
-        QLabel#unknownColumnKeyLabel {
-            font-size: 12px;
-            color: palette(mid);
-        }
-        QLabel#unknownColumnValueLabel {
-            font-size: 13px;
-            font-weight: bold;
-            font-family: monospace;
-            color: #FF7043;
-        }
-        QRadioButton {
-            font-size: 12px;
-        }
-        QComboBox {
-            font-size: 12px;
-            padding: 4px 8px;
-            border: 1px solid palette(mid);
-            border-radius: 4px;
-        }
-        QPushButton#confirmButton {
-            background-color: #00BCD4;
-            color: #000;
-            border: none;
-            border-radius: 6px;
-            padding: 6px 20px;
-            font-weight: bold;
-        }
-        QPushButton#confirmButton:hover {
-            background-color: #26C6DA;
-        }
-        QPushButton#applyToAllButton {
-            background: transparent;
-            border: 1px solid palette(mid);
-            border-radius: 6px;
-            padding: 6px 12px;
-            font-size: 12px;
-        }
-        QPushButton#applyToAllButton:hover {
-            border-color: #00BCD4;
-            color: #00BCD4;
-        }
-    )");
 }

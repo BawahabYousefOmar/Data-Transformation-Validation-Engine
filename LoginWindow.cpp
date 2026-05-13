@@ -1,53 +1,45 @@
 #include "LoginWindow.h"
 #include "ui_LoginWindow.h"
 
-// ----------------------------------------------------------------
-// Constructor
-// ----------------------------------------------------------------
 LoginWindow::LoginWindow(QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::LoginWindow)
 {
     ui->setupUi(this);
 
-    // Fixed size — no resize handles on the login screen
+    // Frameless fixed-size window
     setFixedSize(860, 540);
     setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
 
     applyStyleSheet();
 
-    // Sign In starts disabled until both fields have text
     ui->signInButton->setEnabled(false);
 
-    connect(ui->signInButton, &QPushButton::clicked,
-        this, &LoginWindow::onSignInClicked);
+    connect(ui->signInButton,  &QPushButton::clicked,
+            this, &LoginWindow::onSignInClicked);
     connect(ui->usernameInput, &QLineEdit::textChanged,
-        this, &LoginWindow::onInputChanged);
+            this, &LoginWindow::onInputChanged);
     connect(ui->passwordInput, &QLineEdit::textChanged,
-        this, &LoginWindow::onInputChanged);
+            this, &LoginWindow::onInputChanged);
     connect(ui->passwordInput, &QLineEdit::returnPressed,
-        this, &LoginWindow::onSignInClicked);
+            this, &LoginWindow::onSignInClicked);
 }
 
-// ----------------------------------------------------------------
-// Destructor
-// ----------------------------------------------------------------
 LoginWindow::~LoginWindow()
 {
     delete ui;
 }
 
-// ----------------------------------------------------------------
-// Public API
-// ----------------------------------------------------------------
 bool LoginWindow::isAdmin() const
 {
     return m_adminRole;
 }
 
-// ----------------------------------------------------------------
-// Private Slots
-// ----------------------------------------------------------------
+QString LoginWindow::username() const
+{
+    return m_username;
+}
+
 void LoginWindow::onSignInClicked()
 {
     QString user = ui->usernameInput->text().trimmed();
@@ -55,9 +47,9 @@ void LoginWindow::onSignInClicked()
 
     if (authenticate(user, pass)) {
         clearError();
+        m_username = user;
         accept();
-    }
-    else {
+    } else {
         showError("Invalid username or password. Please try again.");
         ui->passwordInput->clear();
         ui->passwordInput->setFocus();
@@ -67,22 +59,17 @@ void LoginWindow::onSignInClicked()
 void LoginWindow::onInputChanged()
 {
     bool ready = !ui->usernameInput->text().trimmed().isEmpty()
-        && !ui->passwordInput->text().isEmpty();
+              && !ui->passwordInput->text().isEmpty();
     ui->signInButton->setEnabled(ready);
     clearError();
 }
 
-// ----------------------------------------------------------------
-// Private Helpers
-// ----------------------------------------------------------------
 bool LoginWindow::authenticate(const QString& username, const QString& password)
 {
-    // Admin role
     if (username == "admin" && password == "admin123") {
         m_adminRole = true;
         return true;
     }
-    // Worker role
     if (username == "worker" && password == "work123") {
         m_adminRole = false;
         return true;
@@ -105,13 +92,13 @@ void LoginWindow::clearError()
 void LoginWindow::applyStyleSheet()
 {
     setStyleSheet(R"(
-        /* ?? Root dialog ?? */
+        /* Dialog */
         QDialog {
             background: palette(window);
             border-radius: 0px;
         }
 
-        /* ?? LEFT PANEL ?? */
+        /* Left branding panel */
         QFrame#leftPanel {
             background-color: #0D1117;
             border-right: 1px solid #1E2A35;
@@ -140,7 +127,7 @@ void LoginWindow::applyStyleSheet()
             text-transform: uppercase;
         }
 
-        /* decorative feature chips */
+        /* Feature chips */
         QFrame#statChip1, QFrame#statChip2, QFrame#statChip3 {
             background-color: rgba(0, 188, 212, 0.08);
             border: 1px solid rgba(0, 188, 212, 0.25);
@@ -165,7 +152,7 @@ void LoginWindow::applyStyleSheet()
             font-size: 10px;
         }
 
-        /* ?? RIGHT PANEL ?? */
+        /* Sign-in form */
         QFrame#rightPanel {
             background: palette(window);
         }

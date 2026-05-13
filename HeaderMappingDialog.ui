@@ -1,280 +1,167 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-	<class>HeaderMappingDialog</class>
-	<widget class="QDialog" name="HeaderMappingDialog">
-		<property name="geometry">
-			<rect>
-				<x>0</x>
-				<y>0</y>
-				<width>480</width>
-				<height>280</height>
-			</rect>
-		</property>
-		<property name="windowTitle">
-			<string>Unknown Column Detected</string>
-		</property>
-		<property name="modal">
-			<bool>true</bool>
-		</property>
-		<property name="minimumSize">
-			<size>
-				<width>480</width>
-				<height>280</height>
-			</size>
-		</property>
-		<property name="maximumSize">
-			<size>
-				<width>480</width>
-				<height>280</height>
-			</size>
-		</property>
+ <class>HeaderMappingDialog</class>
+ <widget class="QDialog" name="HeaderMappingDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>280</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Unknown Column Detected</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <property name="minimumSize">
+   <size><width>480</width><height>280</height></size>
+  </property>
+  <property name="maximumSize">
+   <size><width>480</width><height>280</height></size>
+  </property>
 
-		<layout class="QVBoxLayout" name="mainLayout">
-			<property name="spacing">
-				<number>16</number>
-			</property>
-			<property name="leftMargin">
-				<number>24</number>
-			</property>
-			<property name="topMargin">
-				<number>24</number>
-			</property>
-			<property name="rightMargin">
-				<number>24</number>
-			</property>
-			<property name="bottomMargin">
-				<number>20</number>
-			</property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing"><number>16</number></property>
+   <property name="leftMargin"><number>24</number></property>
+   <property name="topMargin"><number>24</number></property>
+   <property name="rightMargin"><number>24</number></property>
+   <property name="bottomMargin"><number>20</number></property>
 
-			<!-- Warning header -->
-			<item>
-				<layout class="QHBoxLayout">
-					<item>
-						<widget class="QLabel" name="warningIconLabel">
-							<property name="text">
-								<string>⚠</string>
-							</property>
-							<property name="objectName">
-								<string>warningIconLabel</string>
-							</property>
-						</widget>
-					</item>
-					<item>
-						<widget class="QLabel" name="titleLabel">
-							<property name="text">
-								<string>Unknown Column Header Found</string>
-							</property>
-							<property name="objectName">
-								<string>titleLabel</string>
-							</property>
-						</widget>
-					</item>
-					<item>
-						<spacer>
-							<property name="orientation">
-								<enum>Qt::Horizontal</enum>
-							</property>
-							<property name="sizeHint" stdset="0">
-								<size>
-									<width>40</width>
-									<height>0</height>
-								</size>
-							</property>
-						</spacer>
-					</item>
-				</layout>
-			</item>
+   <!-- Warning header -->
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QLabel" name="warningIconLabel">
+       <property name="text"><string>⚠</string></property>
+       <property name="objectName"><string>warningIconLabel</string></property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="titleLabel">
+       <property name="text"><string>Unknown Column Header Found</string></property>
+       <property name="objectName"><string>titleLabel</string></property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation"><enum>Qt::Horizontal</enum></property>
+       <property name="sizeHint" stdset="0"><size><width>40</width><height>0</height></size></property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
 
-			<!-- Description -->
-			<item>
-				<widget class="QLabel" name="descriptionLabel">
-					<property name="text">
-						<string>The column below was not found in the header mappings. Please choose how to handle it:</string>
-					</property>
-					<property name="wordWrap">
-						<bool>true</bool>
-					</property>
-					<property name="objectName">
-						<string>descriptionLabel</string>
-					</property>
-				</widget>
-			</item>
+   <!-- Description -->
+   <item>
+    <widget class="QLabel" name="descriptionLabel">
+     <property name="text">
+      <string>The column below was not found in the header mappings. Please choose how to handle it:</string>
+     </property>
+     <property name="wordWrap"><bool>true</bool></property>
+     <property name="objectName"><string>descriptionLabel</string></property>
+    </widget>
+   </item>
 
-			<!-- Unknown column display -->
-			<item>
-				<layout class="QHBoxLayout">
-					<item>
-						<widget class="QLabel" name="unknownColumnKeyLabel">
-							<property name="text">
-								<string>Unknown column:</string>
-							</property>
-							<property name="objectName">
-								<string>unknownColumnKeyLabel</string>
-							</property>
-						</widget>
-					</item>
-					<item>
-						<widget class="QLabel" name="unknownColumnValueLabel">
-							<property name="text">
-								<string>department</string>
-							</property>
-							<property name="objectName">
-								<string>unknownColumnValueLabel</string>
-							</property>
-						</widget>
-					</item>
-					<item>
-						<spacer>
-							<property name="orientation">
-								<enum>Qt::Horizontal</enum>
-							</property>
-							<property name="sizeHint" stdset="0">
-								<size>
-									<width>40</width>
-									<height>0</height>
-								</size>
-							</property>
-						</spacer>
-					</item>
-				</layout>
-			</item>
+   <!-- Unknown column display -->
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QLabel" name="unknownColumnKeyLabel">
+       <property name="text"><string>Unknown column:</string></property>
+       <property name="objectName"><string>unknownColumnKeyLabel</string></property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="unknownColumnValueLabel">
+       <property name="text"><string>department</string></property>
+       <property name="objectName"><string>unknownColumnValueLabel</string></property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation"><enum>Qt::Horizontal</enum></property>
+       <property name="sizeHint" stdset="0"><size><width>40</width><height>0</height></size></property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
 
-			<!-- Separator -->
-			<item>
-				<widget class="QFrame" name="separatorLine">
-					<property name="frameShape">
-						<enum>QFrame::HLine</enum>
-					</property>
-					<property name="frameShadow">
-						<enum>QFrame::Sunken</enum>
-					</property>
-				</widget>
-			</item>
+   <!-- Separator -->
+   <item>
+    <widget class="QFrame" name="separatorLine">
+     <property name="frameShape"><enum>QFrame::HLine</enum></property>
+     <property name="frameShadow"><enum>QFrame::Sunken</enum></property>
+    </widget>
+   </item>
 
-			<!-- Map to standard header row -->
-			<item>
-				<layout class="QHBoxLayout">
-					<item>
-						<widget class="QRadioButton" name="mapToStandardRadio">
-							<property name="text">
-								<string>Map to standard field:</string>
-							</property>
-							<property name="objectName">
-								<string>mapToStandardRadio</string>
-							</property>
-							<property name="checked">
-								<bool>true</bool>
-							</property>
-						</widget>
-					</item>
-					<item>
-						<widget class="QComboBox" name="standardFieldCombo">
-							<property name="objectName">
-								<string>standardFieldCombo</string>
-							</property>
-							<property name="minimumWidth">
-								<number>130</number>
-							</property>
-							<item>
-								<property name="text">
-									<string>ID</string>
-								</property>
-							</item>
-							<item>
-								<property name="text">
-									<string>Name</string>
-								</property>
-							</item>
-							<item>
-								<property name="text">
-									<string>GPA</string>
-								</property>
-							</item>
-							<item>
-								<property name="text">
-									<string>Email</string>
-								</property>
-							</item>
-							<item>
-								<property name="text">
-									<string>Phone</string>
-								</property>
-							</item>
-						</widget>
-					</item>
-					<item>
-						<spacer>
-							<property name="orientation">
-								<enum>Qt::Horizontal</enum>
-							</property>
-							<property name="sizeHint" stdset="0">
-								<size>
-									<width>40</width>
-									<height>0</height>
-								</size>
-							</property>
-						</spacer>
-					</item>
-				</layout>
-			</item>
+   <!-- Map to standard header row -->
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QRadioButton" name="mapToStandardRadio">
+       <property name="text"><string>Map to standard field:</string></property>
+       <property name="objectName"><string>mapToStandardRadio</string></property>
+       <property name="checked"><bool>true</bool></property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="standardFieldCombo">
+       <property name="objectName"><string>standardFieldCombo</string></property>
+       <property name="minimumWidth"><number>130</number></property>
+       <item><property name="text"><string>ID</string></property></item>
+       <item><property name="text"><string>Name</string></property></item>
+       <item><property name="text"><string>GPA</string></property></item>
+       <item><property name="text"><string>Email</string></property></item>
+       <item><property name="text"><string>Phone</string></property></item>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation"><enum>Qt::Horizontal</enum></property>
+       <property name="sizeHint" stdset="0"><size><width>40</width><height>0</height></size></property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
 
-			<!-- Skip column row -->
-			<item>
-				<widget class="QRadioButton" name="skipColumnRadio">
-					<property name="text">
-						<string>Skip this column entirely (ignore during validation)</string>
-					</property>
-					<property name="objectName">
-						<string>skipColumnRadio</string>
-					</property>
-				</widget>
-			</item>
+   <!-- Skip column row -->
+   <item>
+    <widget class="QRadioButton" name="skipColumnRadio">
+     <property name="text"><string>Skip this column entirely (ignore during validation)</string></property>
+     <property name="objectName"><string>skipColumnRadio</string></property>
+    </widget>
+   </item>
 
-			<!-- Button row -->
-			<item>
-				<layout class="QHBoxLayout">
-					<item>
-						<spacer>
-							<property name="orientation">
-								<enum>Qt::Horizontal</enum>
-							</property>
-							<property name="sizeHint" stdset="0">
-								<size>
-									<width>40</width>
-									<height>20</height>
-								</size>
-							</property>
-						</spacer>
-					</item>
-					<item>
-						<widget class="QPushButton" name="applyToAllButton">
-							<property name="text">
-								<string>Apply to All Similar</string>
-							</property>
-							<property name="objectName">
-								<string>applyToAllButton</string>
-							</property>
-						</widget>
-					</item>
-					<item>
-						<widget class="QPushButton" name="confirmButton">
-							<property name="text">
-								<string>Confirm</string>
-							</property>
-							<property name="objectName">
-								<string>confirmButton</string>
-							</property>
-							<property name="default">
-								<bool>true</bool>
-							</property>
-						</widget>
-					</item>
-				</layout>
-			</item>
+   <!-- Button row -->
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <spacer>
+       <property name="orientation"><enum>Qt::Horizontal</enum></property>
+       <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="applyToAllButton">
+       <property name="text"><string>Apply to All Similar</string></property>
+       <property name="objectName"><string>applyToAllButton</string></property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="confirmButton">
+       <property name="text"><string>Confirm</string></property>
+       <property name="objectName"><string>confirmButton</string></property>
+       <property name="default"><bool>true</bool></property>
+      </widget>
+     </item>
+    </layout>
+   </item>
 
-		</layout>
-	</widget>
-	<resources/>
-	<connections/>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>
-

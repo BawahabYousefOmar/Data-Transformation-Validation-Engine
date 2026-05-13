@@ -26,4 +26,5 @@ public:
     const HashMap<Rule>& getRulesMap() const;
     //update rule 
     void updateRule(const string& field, const Rule& newRule);
+    bool saveToFile(const string& filePath) const;
 };
