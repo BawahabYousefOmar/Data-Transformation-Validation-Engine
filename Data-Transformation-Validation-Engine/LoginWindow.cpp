@@ -1,5 +1,7 @@
-#include "LoginWindow.h"
+﻿#include "LoginWindow.h"
 #include "ui_LoginWindow.h"
+
+#include "UserManager.h"
 
 // ----------------------------------------------------------------
 // Constructor
@@ -10,14 +12,18 @@ LoginWindow::LoginWindow(QWidget* parent)
 {
     ui->setupUi(this);
 
-    // Fixed size � no resize handles on the login screen
+    // Fixed size — no resize handles on the login screen
     setFixedSize(860, 540);
     setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
+
+    m_userManager.loadUsers("users.txt");
 
     applyStyleSheet();
 
     // Sign In starts disabled until both fields have text
     ui->signInButton->setEnabled(false);
+
+    connect(ui->toggleModeButton, &QPushButton::clicked, this, &LoginWindow::onToggleModeClicked);
 
     connect(ui->signInButton, &QPushButton::clicked,
         this, &LoginWindow::onSignInClicked);
@@ -50,17 +56,27 @@ bool LoginWindow::isAdmin() const
 // ----------------------------------------------------------------
 void LoginWindow::onSignInClicked()
 {
-    QString user = ui->usernameInput->text().trimmed();
-    QString pass = ui->passwordInput->text();
+    string stdUser = ui->usernameInput->text().toStdString();
+    string stdPass = ui->passwordInput->text().toStdString();
 
-    if (authenticate(user, pass)) {
-        clearError();
-        accept();
+    if (m_isSignUpMode) {
+        // --- SIGN UP ---
+        if (m_userManager.registerUser(stdUser, stdPass)) {
+            ui->passwordInput->clear();
+            onToggleModeClicked(); // Switch back to login mode automatically
+        }
+        else {
+            showError("Username already exists!");
+        }
     }
     else {
-        showError("Invalid username or password. Please try again.");
-        ui->passwordInput->clear();
-        ui->passwordInput->setFocus();
+        // --- LOGIN ---
+        if (m_userManager.authenticate(stdUser, stdPass, m_adminRole)) {
+            accept(); // Success! Close window
+        }
+        else {
+            showError("Invalid username or password.");
+        }
     }
 }
 
@@ -72,22 +88,31 @@ void LoginWindow::onInputChanged()
     clearError();
 }
 
+void LoginWindow::onToggleModeClicked()
+{
+    m_isSignUpMode = !m_isSignUpMode;
+
+    if (m_isSignUpMode) {
+        ui->signInButton->setText("Sign Up");
+        ui->toggleModeButton->setText("Already have an account? Sign In");
+    }
+    else {
+        ui->signInButton->setText("Sign In");
+        ui->toggleModeButton->setText("Don't have an account? Sign Up");
+    }
+
+    clearError();
+}
+
 // ----------------------------------------------------------------
 // Private Helpers
 // ----------------------------------------------------------------
 bool LoginWindow::authenticate(const QString& username, const QString& password)
 {
-    // Admin role
-    if (username == "admin" && password == "admin123") {
-        m_adminRole = true;
-        return true;
-    }
-    // Worker role
-    if (username == "worker" && password == "work123") {
-        m_adminRole = false;
-        return true;
-    }
-    return false;
+    std::string stdUser = username.toStdString();
+    std::string stdPass = password.toStdString();
+
+    return m_userManager.authenticate(stdUser, stdPass, m_adminRole);
 }
 
 void LoginWindow::showError(const QString& message)
@@ -105,13 +130,13 @@ void LoginWindow::clearError()
 void LoginWindow::applyStyleSheet()
 {
     setStyleSheet(R"(
-        /* ?? Root dialog ?? */
+        /* ── Root dialog ── */
         QDialog {
             background: palette(window);
             border-radius: 0px;
         }
 
-        /* ?? LEFT PANEL ?? */
+        /* ── LEFT PANEL ── */
         QFrame#leftPanel {
             background-color: #0D1117;
             border-right: 1px solid #1E2A35;
@@ -165,7 +190,7 @@ void LoginWindow::applyStyleSheet()
             font-size: 10px;
         }
 
-        /* ?? RIGHT PANEL ?? */
+        /* ── RIGHT PANEL ── */
         QFrame#rightPanel {
             background: palette(window);
         }
@@ -222,6 +247,22 @@ void LoginWindow::applyStyleSheet()
             font-size: 14px;
             font-weight: 700;
             letter-spacing: 0.5px;
+        }
+
+        QPushButton#toggleModeButton {
+            background-color: transparent;
+            color: #00BCD4;
+            border: 2px solid #00BCD4;
+            border-radius: 8px;
+            padding: 10px 0;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        QPushButton#toggleModeButton:hover {
+            background-color: rgba(0, 188, 212, 0.1);
+            color: #26C6DA;
+            border-color: #26C6DA;
         }
 
         QPushButton#signInButton:hover {

@@ -3,6 +3,10 @@
 #include <QDialog>
 #include <QString>
 
+#include "UserManager.h"
+
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class LoginWindow; }
 QT_END_NAMESPACE
@@ -27,18 +31,25 @@ public:
     explicit LoginWindow(QWidget* parent = nullptr);
     ~LoginWindow();
 
-    // True  → logged-in user has Admin privileges
-    // False → Worker 
+    // True   logged-in user has Admin privileges
+    // False  Worker 
     bool isAdmin() const;
 
 private slots:
     void onSignInClicked();
     void onInputChanged();          // enables/disables the Sign In button
+    void onToggleModeClicked(); // switches between sign in and sign up. 
 
 private:
     Ui::LoginWindow* ui;
-    bool m_adminRole = false;
 
+    // to control login or sign up mode: 
+    bool m_isSignUpMode = false;
+    // to check user credentials: 
+    UserManager m_userManager;
+
+
+    bool m_adminRole = false;
     // Returns true and sets m_adminRole if credentials match
     bool authenticate(const QString& username, const QString& password);
 

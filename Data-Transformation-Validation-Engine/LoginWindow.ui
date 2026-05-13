@@ -11,7 +11,7 @@
 			</rect>
 		</property>
 		<property name="windowTitle">
-			<string>DataValve — Sign In</string>
+			<string> Sign In</string>
 		</property>
 		<property name="sizePolicy">
 			<sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -470,6 +470,17 @@
 								</property>
 								<property name="default">
 									<bool>true</bool>
+								</property>
+							</widget>
+							
+						</item>
+						<item>
+							<widget class="QPushButton" name="toggleModeButton">
+								<property name="text">
+									<string>Don't have an account? Sign Up</string>
+								</property>
+								<property name="cursor">
+									<cursorShape>PointingHandCursor</cursorShape>
 								</property>
 							</widget>
 						</item>
