@@ -11,7 +11,6 @@ using namespace std;
 
 // CSV reader: maps header row through HeaderProcessor, builds one HashMap per data row.
 
-using UnknownHeaderCallback = function<string(const string& rawColumn)>;
 
 
 //// Callback type: given an unknown raw column name, returns:
