@@ -1,23 +1,67 @@
-# Data-Transformation-Validation-Engine
+**CSCE2301 – Digital Design I**  
+**Fall 2026**
 
-**Data Transformation and Validation Engine**
+#  Quine-McCluskey Logic Minimization
+A C++ command-line program that minimizes Boolean functions up to 20 variables using the Quine-McCluskey algorithm.
+ 
+## Team
+| Name | GitHub username | Student ID |
+|------|-----------------|------------|
+| Yousef Bawahab | @BawahabYousefOmar | 900243149 |
+| Mohammed Al-Kaf | @m-kaf10 | 900243151 |
+| Amro Elsafoury | @amrosafory | 900242312 |
+ 
+## Features
+1. Read Boolean functions from a text file.
+2. Store variables, minterms, maxterms, and don't-care terms.
+3. Use minterms and don't-care terms to generate and display all prime implicants along with their binary representations.
+4. Identify from the prime implicants the essential prime implicants (EPIs), and list the minterms they do not cover.
+5. Solve the coverage chart and deduce the minimized Boolean expression.
+6. Manipulate the minimized expression to use only NAND gates.
+7. **(Bonus)** Generate a Verilog module for the function using Verilog primitives.
 
-## Project Goal
-We are making a program that reads a file of student records, cleans up the messy column names, and checks if the data follows the university rules. Good records are kept, and bad records are rejected with a clear list of what went wrong.
+## Input File Format
+The input is a text file with 3 lines:
+- Line 1: number of variables
+- Line 2: either minterms (`m`) or maxterms (`M`) - comma-separated
+- Line 3: don't-care terms (`d`) - comma-separated  
 
-## The Data Structures We Are Using
-* **Dynamic Array:** This is just for storing our records when reading from a file. Then, we will use it to hold the final list of "Valid" records and the final list of "Invalid" records.
-* **Hash Maps:** We will use two of these.
-    * **Map 1 (The Translator):** It takes messy words from the file (like "stud_id") and tells us the standard word to use (like "ID").
-    * **Map 2 (The Rules):** It stores the exact rules for each field (like "GPA max is 4.0").
-* **Hash Set:** This will just store the student IDs we have already checked. If the program sees an ID that is already inside the set, it immediately knows it is a duplicate.
-* **Stack:** Every single student record gets its own stack. If a student breaks three different rules, we push all three error messages into their stack so we can print them out at the end.
+e.g.
 
-## How the Program Will Run (Step-by-Step)
-1. **Load the Rules:** First, the program reads a simple text file called `rules.txt`. It loads things like the maximum GPA into the Rules Hash Map. We do this so we can change the rules later without having to rewrite the C++ code.
-2. **Read the File:** The program opens the messy `students.csv` file and reads it line by line. It splits the text by commas (or other symbols) to get the raw data.
-3. **Clean the Data:** The program uses the Translator Hash Map to fix the column names. Then, it packs this clean data into a Record object.
-4. **Check the Rules:** A separate piece of code looks at the Record. It checks the Rules using the Hash Map to see if the GPA and Credits are valid. It asks the Hash Set if the ID is a duplicate. Any mistakes are added to the record's error stack.
-5. **Sort and Report:** Finally, the program checks every record. If its error stack is empty, it goes into the Valid Array. If it has errors, it goes into the Invalid Array, and we print out the errors from the stack so the user knows exactly why it failed.
+```
+3
+m1,m3,m5,m7
+d0,d5
+```
 
-> This way, we have a clear and organized way to handle messy data, check it against rules, and give feedback on what went wrong.
+The example above is a 3-variable function with minterms 1, 3, 5 and 7 and don't-cares 0 and 5.
+ 
+## Repository Structure
+```
+.
+├── README.md      # this file
+├── src/           # source code
+├── tests/         # test circuits (input files and expected outputs)
+└── report/        # final report
+```
+ 
+## Build and Run
+_Build instructions to be created once the program is implemented_
+ 
+```
+# build
+# run
+```
+ 
+## Testing
+Test circuits can be found in the `tests/` folder. Each test has an input file and its expected output.
+ 
+## Milestones
+- [x] Group formation (Oct 20)
+- [x] Repository with initial README (Oct 20)
+- [ ] Five test circuits in `tests/` (Oct 24)
+- [ ] First source code commit (Oct 24)
+- [ ] Semi-functional implementation (Oct 28)
+- [ ] Fully functional implementation, tagged as release (Nov 7)
+- [ ] Report (Nov 7)
+- [ ] Final interview (Nov 8)
